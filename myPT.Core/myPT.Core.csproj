@@ -39,7 +39,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\Interfaces.cs" />
+    <Compile Include="Common\NavigateKey.cs" />
+    <Compile Include="Common\NavigationData.cs" />
+    <Compile Include="Implementation\ActivityDataLoader.cs" />
+    <Compile Include="Implementation\DataLoaderFactory.cs" />
+    <Compile Include="Implementation\ExerciseDataLoader.cs" />
+    <Compile Include="Implementation\HomeDataLoader.cs" />
+    <Compile Include="Implementation\NoteDataLoader.cs" />
+    <Compile Include="Implementation\ProgramDataLoader.cs" />
+    <Compile Include="Implementation\SessionDataLoader.cs" />
+    <Compile Include="Interfaces\ISessionFactory.cs" />
+    <Compile Include="Interfaces\Model\IActivity.cs" />
+    <Compile Include="Interfaces\IDataLoaderFactory.cs" />
+    <Compile Include="Interfaces\Model\IDataLoader.cs" />
+    <Compile Include="Interfaces\View\IChildView.cs" />
+    <Compile Include="Interfaces\Model\IDataModel.cs" />
+    <Compile Include="Interfaces\Model\IExercise.cs" />
+    <Compile Include="Interfaces\View\IExerciseCreateView.cs" />
+    <Compile Include="Interfaces\View\IExerciseView.cs" />
+    <Compile Include="Interfaces\Model\IHistoryItem.cs" />
+    <Compile Include="Interfaces\View\IMainView.cs" />
+    <Compile Include="Interfaces\Model\INote.cs" />
+    <Compile Include="Interfaces\View\INoteView.cs" />
+    <Compile Include="Interfaces\Model\IProgram.cs" />
+    <Compile Include="Interfaces\View\IProgramReadView.cs" />
+    <Compile Include="Interfaces\View\IProgramUpdateView.cs" />
+    <Compile Include="Interfaces\View\IProgramView.cs" />
+    <Compile Include="Interfaces\Model\ISession.cs" />
+    <Compile Include="Interfaces\View\ISessionCreateView.cs" />
+    <Compile Include="Interfaces\View\ISessionView.cs" />
+    <Compile Include="Interfaces\View\ITimelineView.cs" />
+    <Compile Include="Interfaces\View\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
