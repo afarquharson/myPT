@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IDataModel
+    interface IProxyService
     {
         List<IProgram> Programs { get; set; }
         List<ISession> Sessions { get; set; }
         List<IHistoryItem> History { get; set; }
-
-        IHistoryItem GetHistoryItem(string id);
-        IExercise GetExercise(string id);
-        ISession GetSession(string id);
-        IProgram GetProgram(string id);
     }
 }

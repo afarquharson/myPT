@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IProgramReadView
+    interface IProgramReadView : IProgramView
     {
-        interface IProgramReadView : IProgramView
-        {
-            event EventHandler CloneClicked;
-            event EventHandler StartSessionClicked;
-        }
+        event EventHandler CloneClicked;
+        event EventHandler StartSessionClicked;
     }
 }

@@ -39,19 +39,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
     <Compile Include="Common\NavigationData.cs" />
-    <Compile Include="Implementation\ActivityDataLoader.cs" />
-    <Compile Include="Implementation\DataLoaderFactory.cs" />
-    <Compile Include="Implementation\ExerciseDataLoader.cs" />
-    <Compile Include="Implementation\HomeDataLoader.cs" />
-    <Compile Include="Implementation\NoteDataLoader.cs" />
-    <Compile Include="Implementation\ProgramDataLoader.cs" />
-    <Compile Include="Implementation\SessionDataLoader.cs" />
+    <Compile Include="Implementation\Model\HistoryItem.cs" />
+    <Compile Include="Implementation\Model\XMLProxyService.cs" />
+    <Compile Include="Implementation\Presenter\Loader\ActivityDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\DataLoaderFactory.cs" />
+    <Compile Include="Implementation\Presenter\Loader\ExerciseDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\HomeDataLoader.cs" />
+    <Compile Include="Implementation\Model\DataModel.cs" />
+    <Compile Include="Implementation\Presenter\Loader\NoteDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\ProgramDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\SessionDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\TimelineDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\ExerciseMapper.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\TimelineMapper.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\ProgramMapper.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\SessionMapper.cs" />
+    <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\ISessionFactory.cs" />
-    <Compile Include="Interfaces\Model\IActivity.cs" />
     <Compile Include="Interfaces\IDataLoaderFactory.cs" />
+    <Compile Include="Interfaces\Model\IDataItem.cs" />
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
+    <Compile Include="Interfaces\Model\IProxyService.cs" />
+    <Compile Include="Interfaces\View\IExerciseUpdateView.cs" />
     <Compile Include="Interfaces\View\IChildView.cs" />
     <Compile Include="Interfaces\Model\IDataModel.cs" />
     <Compile Include="Interfaces\Model\IExercise.cs" />
@@ -59,7 +71,6 @@
     <Compile Include="Interfaces\View\IExerciseView.cs" />
     <Compile Include="Interfaces\Model\IHistoryItem.cs" />
     <Compile Include="Interfaces\View\IMainView.cs" />
-    <Compile Include="Interfaces\Model\INote.cs" />
     <Compile Include="Interfaces\View\INoteView.cs" />
     <Compile Include="Interfaces\Model\IProgram.cs" />
     <Compile Include="Interfaces\View\IProgramReadView.cs" />
@@ -73,8 +84,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implementation\Controller\" />
-    <Folder Include="Implementation\Model\" />
     <Folder Include="Implementation\View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using myPT.Core.Interfaces.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myPT.Core.Interfaces
+namespace myPT.Core.Interfaces.Model
 {
-    interface IHistoryItem
+    interface IHistoryItem : IDataItem
     {
-        String Id { get; set; }
         DateTime Date { get; set; }
         String Summary { get; set; }
+        String SessionId { get; set; }
     }
 }

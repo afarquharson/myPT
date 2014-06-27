@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myPT.Core.Interfaces
+namespace myPT.Core.Interfaces.View
 {
-    interface INote : IHistoryItem
+    interface IExerciseUpdateView : IExerciseView
     {
+        event EventHandler UpdateGoalClicked;
     }
 }

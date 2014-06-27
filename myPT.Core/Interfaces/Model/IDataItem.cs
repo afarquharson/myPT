@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myPT.Core.Interfaces
+namespace myPT.Core.Interfaces.Model
 {
-    interface IActivity : IExercise
+    interface IDataItem
     {
         String Id { get; set; }
-        object Achievement { get; set; }
     }
 }

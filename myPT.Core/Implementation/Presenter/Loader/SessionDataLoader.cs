@@ -9,16 +9,8 @@ using System.Text;
 
 namespace myPT.Core.Implementation
 {
-    class HomeDataLoader : IDataLoader
+    class SessionDataLoader : IDataLoader
     {
-        private Interfaces.IDataModel model;
-
-        public HomeDataLoader(Interfaces.IDataModel model)
-        {
-            // TODO: Complete member initialization
-            this.model = model;
-        }
-
         void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel

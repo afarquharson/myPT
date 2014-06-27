@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myPT.Core.Interfaces.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace myPT.Core.Interfaces.View
 {
     interface INoteView : IChildView
     {
-        INote Note { get; set; }
+        IHistoryItem Item { get; set; }
 
         event EventHandler DeleteNoteClicked;
     }

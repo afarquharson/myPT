@@ -9,14 +9,11 @@ using System.Text;
 
 namespace myPT.Core.Implementation
 {
-    class ExerciseDataLoader : IDataLoader
+    class NoteDataLoader : IDataLoader
     {
-        private Interfaces.IDataModel model;
-
-        public ExerciseDataLoader(Interfaces.IDataModel model)
+        public NoteDataLoader()
         {
-            // TODO: Complete member initialization
-            this.model = model;
+
         }
 
         void Load<TModel, TView>(TModel model, TView view, NavigationData data)

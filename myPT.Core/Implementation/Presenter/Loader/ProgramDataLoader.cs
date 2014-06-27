@@ -11,12 +11,8 @@ namespace myPT.Core.Implementation
 {
     class ProgramDataLoader : IDataLoader
     {
-        private Interfaces.IDataModel model;
-
-        public ProgramDataLoader(Interfaces.IDataModel model)
+        public ProgramDataLoader()
         {
-            // TODO: Complete member initialization
-            this.model = model;
         }
 
         void Load<TModel, TView>(TModel model, TView view, NavigationData data)

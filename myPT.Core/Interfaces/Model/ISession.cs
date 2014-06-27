@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myPT.Core.Interfaces
+namespace myPT.Core.Interfaces.Model
 {
     interface ISession : IHistoryItem
     {
-        String Id { get; set; }
         DateTime StartTime { get; set; }
         DateTime EndTime { get; set; }
-        List<IActivity> Activities { get; set; }
+        List<IExercise> Exercises { get; set; }
     }
 }
