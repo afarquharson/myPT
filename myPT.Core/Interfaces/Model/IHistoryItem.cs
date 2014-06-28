@@ -11,6 +11,5 @@ namespace myPT.Core.Interfaces.Model
     {
         DateTime Date { get; set; }
         String Summary { get; set; }
-        String SessionId { get; set; }
     }
 }

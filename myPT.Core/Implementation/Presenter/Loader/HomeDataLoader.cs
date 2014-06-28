@@ -11,7 +11,7 @@ namespace myPT.Core.Implementation
 {
     class HomeDataLoader : IDataLoader
     {
-        void Load<TModel, TView>(TModel model, TView view, NavigationData data)
+        public void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel
         {

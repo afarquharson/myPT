@@ -13,7 +13,6 @@ namespace myPT.Core.Interfaces.Model
         List<IHistoryItem> History { get; set; }
 
         IHistoryItem GetHistoryItem(string id);
-        IExercise GetExercise(string id);
         ISession GetSession(string id);
         IProgram GetProgram(string id);
     }

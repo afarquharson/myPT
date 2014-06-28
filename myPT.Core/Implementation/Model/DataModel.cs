@@ -10,26 +10,31 @@ namespace myPT.Core.Implementation.Model
 {
     class DataModel : IDataModel
     {
+        //TODO Make cache system work correctly. Use Validator pattern to check for changes?
+
         List<IProgram> _cachedPrograms;
         List<ISession> _cachedSessions;
         List<IHistoryItem> _cachedHistory;
 
-        IProxyService ProxyService;
+        private IProxy _proxy;
+        public IProxy Proxy { get { return _proxy ?? (_proxy = new Proxy()); } }
 
-        public DataModel(IProxyService service)
+        public DataModel() { }
+
+        public DataModel(IProxy service) : this()
         {
-            ProxyService = service;
+            _proxy = service;
         }
 
         public List<IProgram> Programs
         {
             get
             {
-                return _cachedPrograms ?? ProxyService.Programs;
+                return _cachedPrograms ?? (_cachedPrograms = Proxy.Programs);
             }
             set
             {
-                ProxyService.Programs = value;
+                Proxy.Programs = value;
                 _cachedPrograms = value;
             }
         }
@@ -38,11 +43,11 @@ namespace myPT.Core.Implementation.Model
         {
             get
             {
-                return _cachedSessions ?? ProxyService.Sessions;
+                return _cachedSessions ?? (_cachedSessions = Proxy.Sessions);
             }
             set
             {
-                ProxyService.Sessions = value;
+                Proxy.Sessions = value;
                 _cachedSessions = value;
             }
         }
@@ -51,11 +56,11 @@ namespace myPT.Core.Implementation.Model
         {
             get
             {
-                return _cachedHistory ?? ProxyService.History;
+                return _cachedHistory ?? (_cachedHistory = Proxy.History);
             }
             set
             {
-                ProxyService.History = value;
+                Proxy.History = value;
                 _cachedHistory = value;
             }
         }

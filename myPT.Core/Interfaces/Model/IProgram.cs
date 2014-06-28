@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IProgram : IDataItem
+    public interface IProgram : IDataItem
     {
         String Name { get; set; }
-        List<IExercise> Exercises { get; set; }
-        Boolean CanEdit { get; set; }
+        List<List<Set>> Exercises { get; set; } //2D array to allow compund sets with reps
+    }
+
+    [Serializable]
+    public struct Set
+    {
+        public List<IExercise> Activities;
+        public int Reps;
     }
 }

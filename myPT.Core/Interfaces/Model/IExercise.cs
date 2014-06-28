@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IExercise : IDataItem
+    public interface IExercise : IDataItem
     {
-        List<IExercise> Set { get; set; }
         Dictionary<ExerciseFieldKey, String> Detail { get; set; }
-        KeyValuePair<ExerciseFieldKey, String> Goal {get; set;}
-        Dictionary<ExerciseFieldKey, String> Achievement { get; set; }
     }
 }

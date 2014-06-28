@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IProxy
+    interface IDataWriter
     {
-        List<IProgram> Programs { get; set; }
-        List<ISession> Sessions { get; set; }
-        List<IHistoryItem> History { get; set; }
+        void Write<TData>(String fileName, TData data);
+
+        TData Read<TData>(String fileName);
     }
 }

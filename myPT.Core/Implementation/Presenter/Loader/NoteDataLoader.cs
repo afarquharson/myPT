@@ -16,7 +16,7 @@ namespace myPT.Core.Implementation
 
         }
 
-        void Load<TModel, TView>(TModel model, TView view, NavigationData data)
+        public void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel
         {

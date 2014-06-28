@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    enum ExerciseFieldKey
+    public enum ExerciseFieldKey
     {
         Description, 
         MaxReps, 
@@ -16,6 +16,8 @@ namespace myPT.Core.Common
         Time,
         Distance,
         Laps,
-        Comment
+        Comment,
+        Goal,
+        Achievement
     }
 }

@@ -1,1 +1,5 @@
 C:\Users\Alice\Documents\GitHub\myPT\myPT.Core\obj\Debug\myPT.Core.csprojResolveAssemblyReference.cache
+C:\Users\Alice\Documents\GitHub\myPT\myPT.Core\bin\Debug\myPT.Core.dll
+C:\Users\Alice\Documents\GitHub\myPT\myPT.Core\bin\Debug\myPT.Core.pdb
+C:\Users\Alice\Documents\GitHub\myPT\myPT.Core\obj\Debug\myPT.Core.dll
+C:\Users\Alice\Documents\GitHub\myPT\myPT.Core\obj\Debug\myPT.Core.pdb

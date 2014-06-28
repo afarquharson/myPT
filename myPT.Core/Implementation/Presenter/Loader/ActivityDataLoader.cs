@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Model;
 using myPT.Core.Interfaces;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
@@ -11,11 +12,18 @@ namespace myPT.Core.Implementation
 {
     class ActivityDataLoader : IDataLoader
     {
-        private IDataModel model;
+        private IDataModel _model;
+        public IDataModel Model { get { return _model ?? (_model = new DataModel()); } } 
 
         public ActivityDataLoader() { }
 
-        void Load<TModel, TView>(TModel model, TView view, NavigationData data)
+        public ActivityDataLoader(IDataModel model)
+            : this()
+        {
+            _model = model;
+        }
+
+        public void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel
         {

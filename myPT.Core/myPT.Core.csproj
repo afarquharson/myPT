@@ -39,11 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ExerciseFieldKey.cs" />
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
     <Compile Include="Common\NavigationData.cs" />
+    <Compile Include="Implementation\Model\Exercise.cs" />
     <Compile Include="Implementation\Model\HistoryItem.cs" />
-    <Compile Include="Implementation\Model\XMLProxyService.cs" />
+    <Compile Include="Implementation\Model\Program.cs" />
+    <Compile Include="Implementation\Model\Session.cs" />
+    <Compile Include="Implementation\Model\Proxy.cs" />
+    <Compile Include="Implementation\Model\Writer.cs" />
     <Compile Include="Implementation\Presenter\Loader\ActivityDataLoader.cs" />
     <Compile Include="Implementation\Presenter\Loader\DataLoaderFactory.cs" />
     <Compile Include="Implementation\Presenter\Loader\ExerciseDataLoader.cs" />
@@ -63,6 +68,7 @@
     <Compile Include="Interfaces\Model\IDataItem.cs" />
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
     <Compile Include="Interfaces\Model\IProxyService.cs" />
+    <Compile Include="Interfaces\Model\IDataWriter.cs" />
     <Compile Include="Interfaces\View\IExerciseUpdateView.cs" />
     <Compile Include="Interfaces\View\IChildView.cs" />
     <Compile Include="Interfaces\Model\IDataModel.cs" />

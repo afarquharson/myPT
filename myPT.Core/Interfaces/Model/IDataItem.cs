@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IDataItem
+    public interface IDataItem
     {
         String Id { get; set; }
     }
