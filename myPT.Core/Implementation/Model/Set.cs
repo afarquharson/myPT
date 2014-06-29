@@ -8,26 +8,21 @@ using System.Threading.Tasks;
 namespace myPT.Core.Implementation.Model
 {
     [Serializable]
-    public class Program : IProgram
+    public class Set
     {
-        public string Name { get; set; }
-
-        public List<List<Set>> Exercises { get; set; }
-
-        public string Id { get; set; }
+        public List<IExercise> Activities;
+        public int Reps;
 
         public override bool Equals(object obj)
         {
-            var other = (Program)obj;
+            var other = (Set)obj;
             if (other == null)
             {
                 return false;
             }
             else
             {
-                return String.Equals(this.Name, other.Name)
-                    && String.Equals(this.Id, other.Id)
-                    && this.Exercises.SequenceEqual(other.Exercises);
+                return this.Reps == other.Reps && this.Activities.SequenceEqual(other.Activities);
             }
         }
     }

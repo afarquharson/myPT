@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces.Model;
+﻿using myPT.Core.Common;
+using myPT.Core.Interfaces.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,23 @@ namespace myPT.Core.Implementation.Model
     [Serializable]
     public class Exercise : IExercise
     {
-        public Dictionary<Common.ExerciseFieldKey, string> Detail
-        {
-            get;
-            set;
-        }
+        public Dictionary<ExerciseFieldKey, string> Detail { get; set; }
 
-        public string Id
+        public string Id { get; set; }
+
+        public override bool Equals(object obj)
         {
-            get;
-            set;
+            bool result;
+            var other = (Exercise)obj;
+            if (other == null)
+            {
+                result = false;
+            }
+            else
+            {
+                result = String.Equals(Id, other.Id) && Detail.SequenceEqual(other.Detail); //ok, but do we care about the order here?
+            }
+            return result;
         }
     }
 }

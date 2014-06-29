@@ -10,7 +10,7 @@ namespace myPT.Core.Implementation.Model
 {
     class DataModel : IDataModel
     {
-        //TODO Make cache system work correctly. Use Validator pattern to check for changes?
+        //TODO Make cache system work correctly - implement equality checking. Will need to sort any Dictionaries before check
 
         List<IProgram> _cachedPrograms;
         List<ISession> _cachedSessions;
@@ -21,7 +21,7 @@ namespace myPT.Core.Implementation.Model
 
         public DataModel() { }
 
-        public DataModel(IProxy service) : this()
+        public DataModel(IProxy service) : this() //Swappable proxy in case we need to change how data is read/written
         {
             _proxy = service;
         }
@@ -30,12 +30,11 @@ namespace myPT.Core.Implementation.Model
         {
             get
             {
-                return _cachedPrograms ?? (_cachedPrograms = Proxy.Programs);
+                return _cachedPrograms ?? (_cachedPrograms = Proxy.Programs); //Always read the first time
             }
             set
             {
-                Proxy.Programs = value;
-                _cachedPrograms = value;
+                if (!value.SequenceEqual(_cachedPrograms)) this.Proxy.Programs = _cachedPrograms = value; 
             }
         }
 
@@ -47,8 +46,7 @@ namespace myPT.Core.Implementation.Model
             }
             set
             {
-                Proxy.Sessions = value;
-                _cachedSessions = value;
+                if (!value.SequenceEqual(_cachedSessions)) this.Proxy.Sessions = _cachedSessions = value;
             }
         }
 
@@ -60,8 +58,7 @@ namespace myPT.Core.Implementation.Model
             }
             set
             {
-                Proxy.History = value;
-                _cachedHistory = value;
+                if (!value.SequenceEqual(_cachedHistory)) this.Proxy.History = _cachedHistory = value;
             }
         }
 

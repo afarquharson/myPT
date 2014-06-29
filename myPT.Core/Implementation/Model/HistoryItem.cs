@@ -10,52 +10,41 @@ namespace myPT.Core.Implementation.Model
 {
     class HistoryItem : IHistoryItem
     {
-
         public DateTime Date
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string Summary
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string SessionId
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            get;
+            set;
         }
 
         public string Id
         {
-            get
+            get;
+            set;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = (HistoryItem)obj;
+            if (other == null)
             {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
+                return false;
+            } else {
+                return (this.Date == other.Date) 
+                    && String.Equals(this.Summary, other.Summary) 
+                    && String.Equals(this.SessionId, other.SessionId) 
+                    && String.Equals(this.Id, other.Id);
             }
         }
     }
