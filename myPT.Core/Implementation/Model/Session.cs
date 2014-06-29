@@ -66,5 +66,10 @@ namespace myPT.Core.Implementation.Model
                     && String.Equals(this.Id, other.Id);
             }
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

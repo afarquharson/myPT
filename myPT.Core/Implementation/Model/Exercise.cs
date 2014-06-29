@@ -29,5 +29,10 @@ namespace myPT.Core.Implementation.Model
             }
             return result;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

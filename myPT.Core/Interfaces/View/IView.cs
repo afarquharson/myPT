@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myPT.Core.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace myPT.Core.Interfaces.View
 {
     interface IView
     {
+        void Load(NavigationData data);
     }
 }

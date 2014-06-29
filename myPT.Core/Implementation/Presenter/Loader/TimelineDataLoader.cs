@@ -9,11 +9,18 @@ namespace myPT.Core.Implementation.Presenter.Loader
 {
     class TimelineDataLoader : IDataLoader
     {
+        private Mapper.TimelineMapper _mapper;
+
+        public TimelineDataLoader(Mapper.TimelineMapper timelineMapper)
+        {
+            _mapper = timelineMapper;
+        }
+
         public void Load<TModel, TView>(TModel model, TView view, Common.NavigationData data)
             where TModel : IDataModel
             where TView : Interfaces.View.IView
         {
-            throw new NotImplementedException();
+            _mapper.Map<TModel, TView>(model, view);
         }
     }
 }

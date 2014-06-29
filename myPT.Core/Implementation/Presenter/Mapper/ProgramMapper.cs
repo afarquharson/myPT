@@ -17,18 +17,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IProgram, IProgramReadView>((s, t) => MapProgramToReadView((IProgram)s, (IProgramReadView)t));
-            AddToConfig<IProgram, IProgramUpdateView>((s, t) => MapProgramToUpdateView((IProgram)s, (IProgramUpdateView)t));
+            AddToConfig<IProgram, IProgramView>((s, t) => MapProgramToView((IProgram)s, (IProgramView)t));
         }
 
-        private void MapProgramToUpdateView(IProgram program, IProgramUpdateView programUpdateView)
+        private void MapProgramToView(IProgram program, IProgramView programUpdateView)
         {
             programUpdateView.Program = program;
-        }
-
-        private void MapProgramToReadView(IProgram program, IProgramReadView programReadView)
-        {
-            programReadView.Program = program;
         }
     }
 }

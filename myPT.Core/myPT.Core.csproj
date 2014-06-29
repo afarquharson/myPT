@@ -48,9 +48,10 @@
     <Compile Include="Implementation\Model\Program.cs" />
     <Compile Include="Implementation\Model\Session.cs" />
     <Compile Include="Implementation\Model\Proxy.cs" />
+    <Compile Include="Implementation\Model\Set.cs" />
     <Compile Include="Implementation\Model\Writer.cs" />
     <Compile Include="Implementation\Presenter\Loader\ActivityDataLoader.cs" />
-    <Compile Include="Implementation\Presenter\Loader\DataLoaderFactory.cs" />
+    <Compile Include="Implementation\Presenter\DataLoaderFactory.cs" />
     <Compile Include="Implementation\Presenter\Loader\ExerciseDataLoader.cs" />
     <Compile Include="Implementation\Presenter\Loader\HomeDataLoader.cs" />
     <Compile Include="Implementation\Model\DataModel.cs" />
@@ -59,39 +60,39 @@
     <Compile Include="Implementation\Presenter\Loader\SessionDataLoader.cs" />
     <Compile Include="Implementation\Presenter\Loader\TimelineDataLoader.cs" />
     <Compile Include="Implementation\Presenter\Mapper\ExerciseMapper.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\HomeMapper.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\NoteMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\TimelineMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\ProgramMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\SessionMapper.cs" />
+    <Compile Include="Implementation\View\ExerciseView.cs" />
+    <Compile Include="Implementation\View\HomeView.cs" />
+    <Compile Include="Implementation\View\NoteView.cs" />
+    <Compile Include="Implementation\View\ProgramView.cs" />
+    <Compile Include="Implementation\View\SessionView.cs" />
+    <Compile Include="Implementation\View\TimelineView.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
-    <Compile Include="Interfaces\ISessionFactory.cs" />
     <Compile Include="Interfaces\IDataLoaderFactory.cs" />
     <Compile Include="Interfaces\Model\IDataItem.cs" />
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
-    <Compile Include="Interfaces\Model\IProxyService.cs" />
+    <Compile Include="Interfaces\Model\IProxy.cs" />
     <Compile Include="Interfaces\Model\IDataWriter.cs" />
-    <Compile Include="Interfaces\View\IExerciseUpdateView.cs" />
     <Compile Include="Interfaces\View\IChildView.cs" />
     <Compile Include="Interfaces\Model\IDataModel.cs" />
     <Compile Include="Interfaces\Model\IExercise.cs" />
-    <Compile Include="Interfaces\View\IExerciseCreateView.cs" />
     <Compile Include="Interfaces\View\IExerciseView.cs" />
     <Compile Include="Interfaces\Model\IHistoryItem.cs" />
-    <Compile Include="Interfaces\View\IMainView.cs" />
+    <Compile Include="Interfaces\View\IHomeView.cs" />
     <Compile Include="Interfaces\View\INoteView.cs" />
     <Compile Include="Interfaces\Model\IProgram.cs" />
-    <Compile Include="Interfaces\View\IProgramReadView.cs" />
-    <Compile Include="Interfaces\View\IProgramUpdateView.cs" />
     <Compile Include="Interfaces\View\IProgramView.cs" />
     <Compile Include="Interfaces\Model\ISession.cs" />
-    <Compile Include="Interfaces\View\ISessionCreateView.cs" />
     <Compile Include="Interfaces\View\ISessionView.cs" />
     <Compile Include="Interfaces\View\ITimelineView.cs" />
     <Compile Include="Interfaces\View\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementation\View\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

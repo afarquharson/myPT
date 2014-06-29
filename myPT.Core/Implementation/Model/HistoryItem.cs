@@ -10,29 +10,10 @@ namespace myPT.Core.Implementation.Model
 {
     class HistoryItem : IHistoryItem
     {
-        public DateTime Date
-        {
-            get;
-            set;
-        }
-
-        public string Summary
-        {
-            get;
-            set;
-        }
-
-        public string SessionId
-        {
-            get;
-            set;
-        }
-
-        public string Id
-        {
-            get;
-            set;
-        }
+        public DateTime Date { get; set; }
+        public string Summary { get; set; }
+        public string SessionId { get; set; }
+        public string Id { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -40,12 +21,19 @@ namespace myPT.Core.Implementation.Model
             if (other == null)
             {
                 return false;
-            } else {
+            } 
+            else 
+            {
                 return (this.Date == other.Date) 
                     && String.Equals(this.Summary, other.Summary) 
                     && String.Equals(this.SessionId, other.SessionId) 
                     && String.Equals(this.Id, other.Id);
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

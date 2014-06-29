@@ -15,5 +15,8 @@ namespace myPT.Core.Interfaces.Model
         IHistoryItem GetHistoryItem(string id);
         ISession GetSession(string id);
         IProgram GetProgram(string id);
+
+        void SaveAll();
+        void LoadAll();
     }
 }

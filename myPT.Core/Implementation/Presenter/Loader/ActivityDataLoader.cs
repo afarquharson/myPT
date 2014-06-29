@@ -13,6 +13,7 @@ namespace myPT.Core.Implementation
     class ActivityDataLoader : IDataLoader
     {
         private IDataModel _model;
+        private NavigateKey navigateKey;
         public IDataModel Model { get { return _model ?? (_model = new DataModel()); } } 
 
         public ActivityDataLoader() { }
@@ -21,6 +22,13 @@ namespace myPT.Core.Implementation
             : this()
         {
             _model = model;
+        }
+
+        public ActivityDataLoader(NavigateKey navigateKey, IDataModel model)
+        {
+            // TODO: Complete member initialization
+            this.navigateKey = navigateKey;
+            this._model = model;
         }
 
         public void Load<TModel, TView>(TModel model, TView view, NavigationData data)

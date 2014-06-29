@@ -10,8 +10,6 @@ namespace myPT.Core.Implementation.Model
 {
     class DataModel : IDataModel
     {
-        //TODO Make cache system work correctly - implement equality checking. Will need to sort any Dictionaries before check
-
         List<IProgram> _cachedPrograms;
         List<ISession> _cachedSessions;
         List<IHistoryItem> _cachedHistory;
@@ -21,7 +19,8 @@ namespace myPT.Core.Implementation.Model
 
         public DataModel() { }
 
-        public DataModel(IProxy service) : this() //Swappable proxy in case we need to change how data is read/written
+        public DataModel(IProxy service)
+            : this()
         {
             _proxy = service;
         }
@@ -30,11 +29,11 @@ namespace myPT.Core.Implementation.Model
         {
             get
             {
-                return _cachedPrograms ?? (_cachedPrograms = Proxy.Programs); //Always read the first time
+                return _cachedPrograms ?? (_cachedPrograms = Proxy.Programs);
             }
             set
             {
-                if (!value.SequenceEqual(_cachedPrograms)) this.Proxy.Programs = _cachedPrograms = value; 
+                if (!value.SequenceEqual(_cachedPrograms)) this.Proxy.Programs = _cachedPrograms = value;
             }
         }
 
@@ -84,8 +83,8 @@ namespace myPT.Core.Implementation.Model
             if (Sessions.Any(i => i.Id == id))
             {
                 return Sessions.Where(i => i.Id == id).First();
-            } 
-            else 
+            }
+            else
             {
                 return null;
             }
@@ -101,6 +100,20 @@ namespace myPT.Core.Implementation.Model
             {
                 return null;
             }
+        }
+
+        public void SaveAll()
+        {
+            Proxy.History = _cachedHistory;
+            Proxy.Programs = _cachedPrograms;
+            Proxy.Sessions = _cachedSessions;
+        }
+
+        public void LoadAll()
+        {
+            _cachedHistory = Proxy.History;
+            _cachedPrograms = Proxy.Programs;
+            _cachedSessions = Proxy.Sessions;
         }
     }
 }

@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter.Mapper
 {
-    class SessionMapper : Common.Mapper
+    class HomeMapper : Common.Mapper
     {
-        public SessionMapper()
+        public HomeMapper()
         {
             Setup();
         }
 
         public void Setup()
         {
-            AddToConfig<ISession, ISessionView>((s, t) => MapSessionToView((ISession)s, (ISessionView)t));
+            AddToConfig<IDataModel, IHomeView>((s, t) => MapProgramsToView((IDataModel)s, (IHomeView)t));
         }
 
-        private void MapSessionToView(ISession session, ISessionView sessionView)
+        private void MapProgramsToView(IDataModel list, IHomeView mainView)
         {
-            sessionView.Session = session;
+            mainView.Programs = list.Programs;
         }
     }
 }

@@ -17,19 +17,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IExercise, IExerciseUpdateView>((s, t) => MapExerciseToUpdateView((IExercise)s, (IExerciseUpdateView)t));
-            AddToConfig<IExercise, IExerciseCreateView>((s, t) => MapExerciseToCreateView((IExercise)s, (IExerciseCreateView)t));
+            AddToConfig<IExercise, IExerciseView>((s, t) => MapExerciseToView((IExercise)s, (IExerciseView)t));
         }
 
-        private void MapExerciseToCreateView(IExercise exercise, IExerciseCreateView exerciseCreateView)
-        {
-            exerciseCreateView.Exercise = exercise;
-        }
-
-        private void MapExerciseToUpdateView(IExercise exercise, IExerciseView exerciseView)
+        private void MapExerciseToView(IExercise exercise, IExerciseView exerciseView)
         {
             exerciseView.Exercise = exercise;
         }
-
     }
 }

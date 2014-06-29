@@ -25,5 +25,10 @@ namespace myPT.Core.Implementation.Model
                 return this.Reps == other.Reps && this.Activities.SequenceEqual(other.Activities);
             }
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

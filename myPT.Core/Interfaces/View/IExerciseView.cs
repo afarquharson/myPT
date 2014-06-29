@@ -10,5 +10,7 @@ namespace myPT.Core.Interfaces.View
     interface IExerciseView : IChildView
     {
         IExercise Exercise { get; set; }
+        event EventHandler UpdateGoalClicked;
+        event EventHandler AddFieldClicked;
     }
 }

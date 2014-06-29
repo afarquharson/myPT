@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter.Mapper
 {
-    class SessionMapper : Common.Mapper
+    class NoteMapper : Common.Mapper
     {
-        public SessionMapper()
+        public NoteMapper()
         {
             Setup();
         }
 
         public void Setup()
         {
-            AddToConfig<ISession, ISessionView>((s, t) => MapSessionToView((ISession)s, (ISessionView)t));
+            AddToConfig<IHistoryItem, INoteView>((s, t) => MapNoteToView((IHistoryItem)s, (INoteView)t));
         }
 
-        private void MapSessionToView(ISession session, ISessionView sessionView)
+        private void MapNoteToView(IHistoryItem historyItem, INoteView noteView)
         {
-            sessionView.Session = session;
+            noteView.Item = historyItem;
         }
     }
 }

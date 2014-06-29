@@ -30,5 +30,10 @@ namespace myPT.Core.Implementation.Model
                     && this.Exercises.SequenceEqual(other.Exercises);
             }
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

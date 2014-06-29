@@ -7,29 +7,27 @@ using myPT.Core.Interfaces;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Common;
 using myPT.Core.Implementation.Presenter.Loader;
+using myPT.Core.Implementation.Presenter.Mapper;
 
 namespace myPT.Core.Implementation
 {
     class DataLoaderFactory : IDataLoaderFactory
     {
-        IDataModel _model;
         IDictionary<NavigateKey, Func<IDataLoader>> _loaderInitialiserDictionary;
 
-        public DataLoaderFactory(IDataModel model) 
+        public DataLoaderFactory() 
         {
-            _model = model;
             _loaderInitialiserDictionary = new Dictionary<NavigateKey, Func<IDataLoader>>()
             {
-                {NavigateKey.ToActivity, () => new ActivityDataLoader()},
-                {NavigateKey.ToExerciseCreate, () => new ExerciseDataLoader()},
-                {NavigateKey.ToExerciseUpdate, () => new ExerciseDataLoader()},
-                {NavigateKey.ToNote, () => new NoteDataLoader()},
-                {NavigateKey.ToProgramReadOnly, () => new ProgramDataLoader()},
-                {NavigateKey.ToProgramUpdate, () => new ProgramDataLoader()},
-                {NavigateKey.ToSessionCreate, () => new SessionDataLoader()},
-                {NavigateKey.ToSessionReadOnly, () => new SessionDataLoader()},
-                {NavigateKey.ToHome, () => new HomeDataLoader()},
-                {NavigateKey.ToTimeline, () => new TimelineDataLoader()}
+                {NavigateKey.ToExerciseCreate, () => new ExerciseDataLoader(new ExerciseMapper())},
+                {NavigateKey.ToExerciseUpdate, () => new ExerciseDataLoader(new ExerciseMapper())},
+                {NavigateKey.ToNote, () => new NoteDataLoader(new NoteMapper())},
+                {NavigateKey.ToProgramReadOnly, () => new ProgramDataLoader(new ProgramMapper())},
+                {NavigateKey.ToProgramUpdate, () => new ProgramDataLoader(new ProgramMapper())},
+                {NavigateKey.ToSessionCreate, () => new SessionDataLoader(new SessionMapper())},
+                {NavigateKey.ToSessionReadOnly, () => new SessionDataLoader(new SessionMapper())},
+                {NavigateKey.ToHome, () => new HomeDataLoader(new HomeMapper())},
+                {NavigateKey.ToTimeline, () => new TimelineDataLoader(new TimelineMapper())}
             };
         }
 

@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Presenter.Mapper;
 using myPT.Core.Interfaces;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
@@ -11,11 +12,18 @@ namespace myPT.Core.Implementation
 {
     class SessionDataLoader : IDataLoader
     {
+        private SessionMapper _mapper;
+
+        public SessionDataLoader(SessionMapper sessionMapper)
+        {
+            _mapper = sessionMapper;
+        }
+        
         public void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel
         {
-            throw new NotImplementedException();
+            _mapper.Map<TModel, TView>(model, view);
         }
     }
 }

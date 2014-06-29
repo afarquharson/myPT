@@ -10,5 +10,7 @@ namespace myPT.Core.Interfaces.View
     interface ISessionView : IChildView
     {
         ISession Session { get; set; }
+        event EventHandler AchievementValueChanged;
+        event EventHandler StartSessionClicked;
     }
 }
