@@ -20,13 +20,13 @@ namespace myPT.Core.Implementation.Presenter
             _state = state;
         }
 
-        public void Load<TModel, TView, TMapper, TState>(TModel model, TView view, Common.NavigationData data)
+        public void Load<TModel, TView>(TModel model, TView view, Common.NavigationData data)
             where TModel : IDataModel
             where TView : IView
-            where TState : IViewState
-            where TMapper : IMapper
         {
             view.State = _state;
+            view.GUID = data.ToItem;
+            view.ParentGUID = data.FromItem;
             _mapper.Map<TModel, TView>(model, view);
         }
 

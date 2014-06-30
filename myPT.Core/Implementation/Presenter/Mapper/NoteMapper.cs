@@ -17,12 +17,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IHistoryItem, INoteView>((s, t) => MapNoteToView((IHistoryItem)s, (INoteView)t));
+            AddToConfig<IDataModel, INoteView>((s, t) => MapNoteToView((IDataModel)s, (INoteView)t));
         }
 
-        private void MapNoteToView(IHistoryItem historyItem, INoteView noteView)
+        private void MapNoteToView(IDataModel model, INoteView noteView)
         {
-            noteView.Item = historyItem;
+            noteView.Item = model.GetHistoryItem(noteView.GUID);
         }
     }
 }

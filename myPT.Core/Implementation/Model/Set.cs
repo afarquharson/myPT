@@ -10,7 +10,7 @@ namespace myPT.Core.Implementation.Model
     [Serializable]
     public class Set
     {
-        public List<IExercise> Activities;
+        public List<IExercise> Exercises;
         public int Reps;
 
         public override bool Equals(object obj)
@@ -22,7 +22,7 @@ namespace myPT.Core.Implementation.Model
             }
             else
             {
-                return this.Reps == other.Reps && this.Activities.SequenceEqual(other.Activities);
+                return this.Reps == other.Reps && this.Exercises.SequenceEqual(other.Exercises);
             }
         }
 

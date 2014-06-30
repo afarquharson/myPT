@@ -15,6 +15,7 @@ namespace myPT.Core.Interfaces.Model
         IHistoryItem GetHistoryItem(string id);
         ISession GetSession(string id);
         IProgram GetProgram(string id);
+        IExercise GetExercise(bool isSession, string parentID, string ExerciseID);
 
         void SaveAll();
         void LoadAll();

@@ -27,7 +27,7 @@ namespace myPT.Core.Implementation.Model
                 {
                     for (int i = 0; i < set.Reps; i++)
                     {
-                        Exercises.AddRange(set.Activities);
+                        Exercises.AddRange(set.Exercises);
                     }
                 }
             }

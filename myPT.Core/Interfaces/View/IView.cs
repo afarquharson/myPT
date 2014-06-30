@@ -9,7 +9,9 @@ namespace myPT.Core.Interfaces.View
 {
     interface IView
     {
-        IViewState State;
+        IViewState State { get; set; }
+        string GUID { get; set; } //The ID of the item being viewed
+        String ParentGUID { get; set; } //The ID of the parent item
         void Load(NavigationData data);
     }
 }

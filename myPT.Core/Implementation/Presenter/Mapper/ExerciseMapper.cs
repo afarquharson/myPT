@@ -17,19 +17,19 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IExercise, IExerciseView>((s, t) => MapExerciseToView((IExercise)s, (IExerciseView)t));
+            AddToConfig<IDataModel, IExerciseView>((s, t) => MapExerciseToView((IDataModel)s, (IExerciseView)t));
         }
 
-        private void MapExerciseToView(IExercise exercise, IExerciseView exerciseView)
+        private void MapExerciseToView(IDataModel model, IExerciseView exerciseView)
         {
             //TODO Get state from view, load appropriate exercise from model based on state
             //IF view is ExerciseComplete, use Session. If view is ExerciseCreate/Update, use Program
-            exerciseView.Exercise = exercise;
+            exerciseView.Exercise = model.GetExercise((exerciseView.State.State == Common.ViewState.Complete), exerciseView.ParentGUID, exerciseView.GUID);
         }
 
-        private void MapViewToExercise(IExerciseView exerciseView, IExercise exercise)
+        private void MapViewToExercise(IExerciseView exerciseView, IDataModel model)
         {
-            exercise = exerciseView.Exercise;
+            //exercise = exerciseView.Exercise; //?? How to do this?
         }
     }
 }

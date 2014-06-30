@@ -17,12 +17,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IProgram, IProgramView>((s, t) => MapProgramToView((IProgram)s, (IProgramView)t));
+            AddToConfig<IDataModel, IProgramView>((s, t) => MapProgramToView((IDataModel)s, (IProgramView)t));
         }
 
-        private void MapProgramToView(IProgram program, IProgramView programUpdateView)
+        private void MapProgramToView(IDataModel model, IProgramView programUpdateView)
         {
-            programUpdateView.Program = program;
+            programUpdateView.Program = model.GetProgram(programUpdateView.GUID);
         }
     }
 }

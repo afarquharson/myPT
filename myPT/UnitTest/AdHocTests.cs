@@ -37,7 +37,7 @@ namespace UnitTest
                             { 
                                 new Set 
                                 {
-                                    Activities = new List<IExercise> 
+                                    Exercises = new List<IExercise> 
                                     {
                                         new Exercise 
                                         {

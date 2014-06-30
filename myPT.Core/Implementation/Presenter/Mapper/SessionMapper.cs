@@ -17,12 +17,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<ISession, ISessionView>((s, t) => MapSessionToView((ISession)s, (ISessionView)t));
+            AddToConfig<IDataModel, ISessionView>((s, t) => MapSessionToView((IDataModel)s, (ISessionView)t));
         }
 
-        private void MapSessionToView(ISession session, ISessionView sessionView)
+        private void MapSessionToView(IDataModel model, ISessionView sessionView)
         {
-            sessionView.Session = session;
+            sessionView.Session = model.GetSession(sessionView.GUID);
         }
     }
 }

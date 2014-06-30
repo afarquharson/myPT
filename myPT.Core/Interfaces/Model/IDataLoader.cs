@@ -11,10 +11,10 @@ namespace myPT.Core.Interfaces.Model
     interface IDataLoader
     {
         void Load<TModel, TView>(TModel model, TView view, NavigationData data)
-            where TView : IView
-            where TModel : IDataModel;
+            where TModel : IDataModel
+            where TView : IView;
 
-        void Save<TView, TModel(TView view, TModel model)
+        void Save<TView, TModel>(TView view, TModel model)
             where TView : IView
             where TModel : IDataModel;
     }

@@ -102,6 +102,30 @@ namespace myPT.Core.Implementation.Model
             }
         }
 
+        public IExercise GetExercise(bool isSession, string parentID, string ExerciseID)
+        {
+            if (isSession)
+            {
+                return GetSession(parentID).Exercises.FirstOrDefault(e => String.Equals(e.Id, ExerciseID));
+            }
+            else
+            {
+                //Use nested loops instead of Linq for efficiency...Could also refactor to use a Dictionary?
+                var program = GetProgram(parentID);
+                foreach(var compoundSet in program.Exercises)
+                {
+                    foreach (var set in compoundSet)
+                    {
+                        foreach (var exercise in set.Exercises)
+                        {
+                            if (String.Equals(exercise.Id, ExerciseID)) return exercise;
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         public void SaveAll()
         {
             Proxy.History = _cachedHistory;
