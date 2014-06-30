@@ -22,7 +22,7 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapSessionToView(IDataModel model, ISessionView sessionView)
         {
-            sessionView.Session = model.GetSession(sessionView.GUID);
+            sessionView.Session = model.Sessions[sessionView.GUID];
         }
     }
 }

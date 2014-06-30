@@ -8,13 +8,10 @@ namespace myPT.Core.Interfaces.Model
 {
     interface IDataModel
     {
-        List<IProgram> Programs { get; set; }
-        List<ISession> Sessions { get; set; }
-        List<IHistoryItem> History { get; set; }
+        Dictionary<string, IProgram> Programs { get; set; }
+        Dictionary<string, ISession> Sessions { get; set; }
+        Dictionary<string, IHistoryItem> History { get; set; }
 
-        IHistoryItem GetHistoryItem(string id);
-        ISession GetSession(string id);
-        IProgram GetProgram(string id);
         IExercise GetExercise(bool isSession, string parentID, string ExerciseID);
 
         void SaveAll();

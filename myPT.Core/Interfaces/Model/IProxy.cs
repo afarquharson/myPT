@@ -8,8 +8,8 @@ namespace myPT.Core.Interfaces.Model
 {
     interface IProxy
     {
-        List<IProgram> Programs { get; set; }
-        List<ISession> Sessions { get; set; }
-        List<IHistoryItem> History { get; set; }
+        Dictionary<string, IProgram> Programs { get; set; }
+        Dictionary<string, ISession> Sessions { get; set; }
+        Dictionary<string, IHistoryItem> History { get; set; }
     }
 }

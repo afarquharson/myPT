@@ -22,7 +22,7 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapProgramToView(IDataModel model, IProgramView programUpdateView)
         {
-            programUpdateView.Program = model.GetProgram(programUpdateView.GUID);
+            programUpdateView.Program = model.Programs[programUpdateView.GUID];
         }
     }
 }

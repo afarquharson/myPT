@@ -9,7 +9,7 @@ namespace myPT.Core.Interfaces.View
 {
     interface IHomeView : IView
     {
-        List<IProgram> Programs { get; set; }
+        Dictionary<string, IProgram> Programs { get; set; }
 
         event EventHandler SettingsClicked;
         event EventHandler AddProgramClicked;

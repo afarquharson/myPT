@@ -10,7 +10,7 @@ namespace myPT.Core.Implementation.Model
     [Serializable]
     public class Set
     {
-        public List<IExercise> Exercises;
+        public Dictionary<string, IExercise> Exercises;
         public int Reps;
 
         public override bool Equals(object obj)

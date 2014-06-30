@@ -9,7 +9,7 @@ namespace myPT.Core.Interfaces.View
 {
     interface ITimelineView
     {
-        List<IHistoryItem> History { get; set; }
+        Dictionary<string, IHistoryItem> History { get; set; }
 
         event EventHandler BackClicked;
         event EventHandler ItemSelected;

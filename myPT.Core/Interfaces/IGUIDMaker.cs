@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myPT.Core.Interfaces.Model
+namespace myPT.Core.Common
 {
-    public interface IDataItem
+    interface IGUIDMaker
     {
-        String GUID { get; set; }
+        String GetGUID();
     }
 }

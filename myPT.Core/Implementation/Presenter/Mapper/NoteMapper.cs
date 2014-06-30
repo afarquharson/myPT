@@ -22,7 +22,7 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapNoteToView(IDataModel model, INoteView noteView)
         {
-            noteView.Item = model.GetHistoryItem(noteView.GUID);
+            //noteView.Item = model.Hist;
         }
     }
 }

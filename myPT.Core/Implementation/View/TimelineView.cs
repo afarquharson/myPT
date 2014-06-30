@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces.View;
+﻿using myPT.Core.Interfaces.Model;
+using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,10 @@ namespace myPT.Core.Implementation.View
 {
     class TimelineView : ITimelineView
     {
-        public List<Interfaces.Model.IHistoryItem> History
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public Dictionary<string, IHistoryItem> History { get; set; }
 
         public event EventHandler BackClicked;
-
         public event EventHandler ItemSelected;
-
         public event EventHandler AddClicked;
     }
 }

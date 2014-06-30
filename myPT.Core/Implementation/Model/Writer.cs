@@ -17,7 +17,7 @@ namespace myPT.Core.Implementation.Model
 
         public void Write<TData>(string fileName, TData data)
         {
-            if (File.Exists(fileName)) File.Delete(fileName);//TODO use Append or CreateNew when appropriate instead of rewriting
+            if (File.Exists(fileName)) File.Delete(fileName);//TODO use Append or CreateNew when appropriate instead of overwriting file
             Stream = File.Create(fileName);
             Formatter = new BinaryFormatter();
             Formatter.Serialize(Stream, data);

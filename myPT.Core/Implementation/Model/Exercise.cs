@@ -13,7 +13,7 @@ namespace myPT.Core.Implementation.Model
     {
         public Dictionary<ExerciseFieldKey, string> Detail { get; set; }
 
-        public string Id { get; set; }
+        public string GUID { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -25,7 +25,7 @@ namespace myPT.Core.Implementation.Model
             }
             else
             {
-                result = String.Equals(Id, other.Id) && Detail.SequenceEqual(other.Detail); //ok, but do we care about the order here?
+                result = String.Equals(GUID, other.GUID) && Detail.SequenceEqual(other.Detail); //ok, but do we care about the order here?
             }
             return result;
         }

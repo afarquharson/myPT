@@ -10,9 +10,9 @@ namespace myPT.Core.Implementation.Model
 {
     class DataModel : IDataModel
     {
-        List<IProgram> _cachedPrograms;
-        List<ISession> _cachedSessions;
-        List<IHistoryItem> _cachedHistory;
+        Dictionary<string, IProgram> _cachedPrograms;
+        Dictionary<string, ISession> _cachedSessions;
+        Dictionary<string, IHistoryItem> _cachedHistory;
 
         private IProxy _proxy;
         public IProxy Proxy { get { return _proxy ?? (_proxy = new Proxy()); } }
@@ -25,7 +25,7 @@ namespace myPT.Core.Implementation.Model
             _proxy = service;
         }
 
-        public List<IProgram> Programs
+        public Dictionary<string, IProgram> Programs
         {
             get
             {
@@ -37,7 +37,7 @@ namespace myPT.Core.Implementation.Model
             }
         }
 
-        public List<ISession> Sessions
+        public Dictionary<string, ISession> Sessions
         {
             get
             {
@@ -49,7 +49,7 @@ namespace myPT.Core.Implementation.Model
             }
         }
 
-        public List<IHistoryItem> History
+        public Dictionary<string, IHistoryItem> History
         {
             get
             {
@@ -61,65 +61,20 @@ namespace myPT.Core.Implementation.Model
             }
         }
 
-        public IHistoryItem GetHistoryItem(string id)
-        {
-            if (History.Any(i => i.Id == id))
-            {
-                return History.Where(i => i.Id == id).First();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public void AddHistoryItem(IHistoryItem item)
-        {
-            History.Add(item);
-        }
-
-        public ISession GetSession(string id)
-        {
-            if (Sessions.Any(i => i.Id == id))
-            {
-                return Sessions.Where(i => i.Id == id).First();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public IProgram GetProgram(string id)
-        {
-            if (Programs.Any(i => i.Id == id))
-            {
-                return Programs.Where(i => i.Id == id).First();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         public IExercise GetExercise(bool isSession, string parentID, string ExerciseID)
         {
             if (isSession)
             {
-                return GetSession(parentID).Exercises.FirstOrDefault(e => String.Equals(e.Id, ExerciseID));
+                return Sessions[parentID].Exercises[ExerciseID];
             }
             else
             {
-                //Use nested loops instead of Linq for efficiency...Could also refactor to use a Dictionary?
-                var program = GetProgram(parentID);
+                var program = Programs[parentID];
                 foreach(var compoundSet in program.Exercises)
                 {
                     foreach (var set in compoundSet)
                     {
-                        foreach (var exercise in set.Exercises)
-                        {
-                            if (String.Equals(exercise.Id, ExerciseID)) return exercise;
-                        }
+                        return set.Exercises[ExerciseID]; //Refactored to use Dictionaries since we are looking up by value
                     }
                 }
             }

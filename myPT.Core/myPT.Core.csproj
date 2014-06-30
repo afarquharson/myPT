@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ExerciseFieldKey.cs" />
+    <Compile Include="Common\GUIDMaker.cs" />
+    <Compile Include="Interfaces\IGUIDMaker.cs" />
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
     <Compile Include="Common\NavigationData.cs" />

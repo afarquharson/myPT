@@ -17,7 +17,7 @@ namespace myPT.Core.Implementation.View
         private IDataModel _model;
         public IDataModel Model {get {return _model ?? (_model = new DataModel());}}
 
-        public List<IProgram> Programs { get; set; }
+        public Dictionary<string, IProgram> Programs { get; set; }
 
         public event EventHandler SettingsClicked = delegate { };
         public event EventHandler AddProgramClicked = delegate { };
@@ -38,40 +38,10 @@ namespace myPT.Core.Implementation.View
             Loader.GetLoader(data).Load<IDataModel, IHomeView>(Model, this, data);
         }
 
-        public IViewState State
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public IViewState State { get; set; }
 
-        public string GUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string GUID { get; set; }
 
-        public string ParentGUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string ParentGUID { get; set; }
     }
 }

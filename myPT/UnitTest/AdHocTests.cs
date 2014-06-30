@@ -29,7 +29,7 @@ namespace UnitTest
                 new Program 
                 {
                     Name = pName,
-                    Id = pId,
+                    GUID = pId,
                     Exercises = new List<List<Set>>
                     {
                         new List<Set> 
@@ -37,15 +37,17 @@ namespace UnitTest
                             { 
                                 new Set 
                                 {
-                                    Exercises = new List<IExercise> 
+                                    Exercises = new Dictionary<string, IExercise> 
                                     {
+                                        {eId,
                                         new Exercise 
                                         {
-                                            Id = eId,
+                                            GUID = eId,
                                             Detail = new Dictionary<ExerciseFieldKey, string> 
                                             {
                                                 {ExerciseFieldKey.Description, eDescription}
                                             }
+                                        }
                                         }
                                     },
                                     Reps = 2
@@ -80,7 +82,7 @@ namespace UnitTest
                 {
                     {ExerciseFieldKey.Description, eDescription}
                 },
-                Id = eId
+                GUID = eId
             };
             Exercise b = new Exercise
             {
@@ -88,7 +90,7 @@ namespace UnitTest
                 {
                     {ExerciseFieldKey.Description, eDescription_Clone}
                 },
-                Id = eId_Clone
+                GUID = eId_Clone
             };
             Exercise c = new Exercise
             {
@@ -96,7 +98,7 @@ namespace UnitTest
                 {
                     {ExerciseFieldKey.Comment, "Comment"}
                 },
-                Id = "DifferentID"
+                GUID = "DifferentID"
             };
             Assert.IsTrue(a.Equals(b)); //clones are the same
             Assert.IsTrue(b.Equals(a)); //clones are the same - symmetrical 
@@ -110,7 +112,7 @@ namespace UnitTest
                     {ExerciseFieldKey.Achievement, "One"},
                     {ExerciseFieldKey.Description, "Two"},
                 },
-                Id = "dId"
+                GUID = "dId"
             };
             Exercise e = new Exercise
             {
@@ -119,7 +121,7 @@ namespace UnitTest
                     {ExerciseFieldKey.Description, "Two"},
                     {ExerciseFieldKey.Achievement, "One"},
                 },
-                Id = "dId"
+                GUID = "dId"
             };
             Exercise f = new Exercise
             {
@@ -129,7 +131,7 @@ namespace UnitTest
                     {ExerciseFieldKey.Achievement, "One"},
                     {ExerciseFieldKey.Distance, "Three"},
                 },
-                Id = "dId"
+                GUID = "dId"
             };
             Assert.IsFalse(d.Equals(e)); //Differently-sorted Dictionaries are different
             Assert.IsFalse(e.Equals(f)); //An extra element is difference

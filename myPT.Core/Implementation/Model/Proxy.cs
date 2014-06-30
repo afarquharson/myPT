@@ -27,39 +27,39 @@ namespace myPT.Core.Implementation.Model
             _writer = s;
         }
 
-        public List<IProgram> Programs
+        public Dictionary<string, IProgram> Programs
         {
             get
             {
-                return _writer.Read<List<IProgram>>(pFileName);
+                return _writer.Read<Dictionary<string, IProgram>>(pFileName);
             }
             set
             {
-                _writer.Write<List<IProgram>>(pFileName, value);
+                _writer.Write<Dictionary<string, IProgram>>(pFileName, value);
             }
         }
 
-        public List<ISession> Sessions
+        public Dictionary<string, ISession> Sessions
         {
             get
             {
-                return _writer.Read<List<ISession>>(sFileName);
+                return _writer.Read<Dictionary<string, ISession>>(sFileName);
             }
             set
             {
-                _writer.Write<List<ISession>>(sFileName, value);
+                _writer.Write<Dictionary<string, ISession>>(sFileName, value);
             }
         }
 
-        public List<IHistoryItem> History
+        public Dictionary<string, IHistoryItem> History
         {
             get
             {
-                return _writer.Read<List<IHistoryItem>>(hFileName);
+                return _writer.Read<Dictionary<string, IHistoryItem>>(hFileName);
             }
             set
             {
-                _writer.Write<List<IHistoryItem>>(hFileName, value);
+                _writer.Write<Dictionary<string, IHistoryItem>>(hFileName, value);
             }
         }
     }
