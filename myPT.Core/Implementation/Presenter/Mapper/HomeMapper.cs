@@ -17,12 +17,18 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         public void Setup()
         {
-            AddToConfig<IDataModel, IHomeView>((s, t) => MapProgramsToView((IDataModel)s, (IHomeView)t));
+            AddToConfig<IDataModel, IHomeView>((s, t) => MapModelToView((IDataModel)s, (IHomeView)t));
+            AddToConfig<IHomeView, IDataModel>((s, t) => MapViewToModel((IHomeView)s, (IDataModel)t));
         }
 
-        private void MapProgramsToView(IDataModel list, IHomeView mainView)
+        private void MapModelToView(IDataModel list, IHomeView mainView)
         {
             mainView.Programs = list.Programs;
+        }
+
+        private void MapViewToModel(IHomeView mainView, IDataModel model)
+        {
+            model.Programs = mainView.Programs;
         }
     }
 }

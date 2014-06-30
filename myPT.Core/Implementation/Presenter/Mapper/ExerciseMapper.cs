@@ -22,7 +22,14 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapExerciseToView(IExercise exercise, IExerciseView exerciseView)
         {
+            //TODO Get state from view, load appropriate exercise from model based on state
+            //IF view is ExerciseComplete, use Session. If view is ExerciseCreate/Update, use Program
             exerciseView.Exercise = exercise;
+        }
+
+        private void MapViewToExercise(IExerciseView exerciseView, IExercise exercise)
+        {
+            exercise = exerciseView.Exercise;
         }
     }
 }

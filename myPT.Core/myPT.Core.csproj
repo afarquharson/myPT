@@ -43,6 +43,7 @@
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
     <Compile Include="Common\NavigationData.cs" />
+    <Compile Include="Common\ViewState.cs" />
     <Compile Include="Implementation\Model\Exercise.cs" />
     <Compile Include="Implementation\Model\HistoryItem.cs" />
     <Compile Include="Implementation\Model\Program.cs" />
@@ -50,15 +51,9 @@
     <Compile Include="Implementation\Model\Proxy.cs" />
     <Compile Include="Implementation\Model\Set.cs" />
     <Compile Include="Implementation\Model\Writer.cs" />
-    <Compile Include="Implementation\Presenter\Loader\ActivityDataLoader.cs" />
     <Compile Include="Implementation\Presenter\DataLoaderFactory.cs" />
-    <Compile Include="Implementation\Presenter\Loader\ExerciseDataLoader.cs" />
-    <Compile Include="Implementation\Presenter\Loader\HomeDataLoader.cs" />
+    <Compile Include="Implementation\Presenter\DataLoader.cs" />
     <Compile Include="Implementation\Model\DataModel.cs" />
-    <Compile Include="Implementation\Presenter\Loader\NoteDataLoader.cs" />
-    <Compile Include="Implementation\Presenter\Loader\ProgramDataLoader.cs" />
-    <Compile Include="Implementation\Presenter\Loader\SessionDataLoader.cs" />
-    <Compile Include="Implementation\Presenter\Loader\TimelineDataLoader.cs" />
     <Compile Include="Implementation\Presenter\Mapper\ExerciseMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\HomeMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\NoteMapper.cs" />
@@ -70,6 +65,15 @@
     <Compile Include="Implementation\View\NoteView.cs" />
     <Compile Include="Implementation\View\ProgramView.cs" />
     <Compile Include="Implementation\View\SessionView.cs" />
+    <Compile Include="Implementation\View\State\ExerciseStateCreate.cs" />
+    <Compile Include="Implementation\View\State\ExerciseStateUpdate.cs" />
+    <Compile Include="Implementation\View\State\HomeStateDefault.cs" />
+    <Compile Include="Implementation\View\State\NoteStateDefault.cs" />
+    <Compile Include="Implementation\View\State\ProgramStateUpdate.cs" />
+    <Compile Include="Implementation\View\State\ProgramStateCreate.cs" />
+    <Compile Include="Implementation\View\State\SessionStateCreate.cs" />
+    <Compile Include="Implementation\View\State\SessionStateReadOnly.cs" />
+    <Compile Include="Implementation\View\State\TimelineStateDefault.cs" />
     <Compile Include="Implementation\View\TimelineView.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\IDataLoaderFactory.cs" />
@@ -90,6 +94,13 @@
     <Compile Include="Interfaces\View\ISessionView.cs" />
     <Compile Include="Interfaces\View\ITimelineView.cs" />
     <Compile Include="Interfaces\View\IView.cs" />
+    <Compile Include="Interfaces\View\State\IExerciseState.cs" />
+    <Compile Include="Interfaces\View\State\IHomeState.cs" />
+    <Compile Include="Interfaces\View\State\INoteState.cs" />
+    <Compile Include="Interfaces\View\State\IProgramState.cs" />
+    <Compile Include="Interfaces\View\State\ISessionState.cs" />
+    <Compile Include="Interfaces\View\State\ITimelineState.cs" />
+    <Compile Include="Interfaces\View\State\IViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IView
+    interface IViewState
     {
-        IViewState State;
-        void Load(NavigationData data);
+        ViewState State { get; }
+        bool CanBack();
     }
 }

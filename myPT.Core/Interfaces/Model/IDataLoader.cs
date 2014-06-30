@@ -13,5 +13,9 @@ namespace myPT.Core.Interfaces.Model
         void Load<TModel, TView>(TModel model, TView view, NavigationData data)
             where TView : IView
             where TModel : IDataModel;
+
+        void Save<TView, TModel(TView view, TModel model)
+            where TView : IView
+            where TModel : IDataModel;
     }
 }
