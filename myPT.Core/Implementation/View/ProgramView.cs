@@ -1,4 +1,6 @@
-﻿using myPT.Core.Interfaces.View;
+﻿using myPT.Core.Implementation.Presenter;
+using myPT.Core.Interfaces.Model;
+using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,67 +11,23 @@ namespace myPT.Core.Implementation.View
 {
     class ProgramView : IProgramView
     {
-        public Interfaces.Model.IProgram Program
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        private ProgramPresenter _presenter;
+        public ProgramPresenter Presenter { get {return _presenter ?? (_presenter = new ProgramPresenter(this)); }}
 
-        public event EventHandler AddSetClicked;
+        public IProgram Program { get; set; }
+        public IViewState State { get; set; }
+        public string GUID { get; set; }
+        public string ParentGUID { get; set; }
 
-        public event EventHandler AddExerciseClicked;
-
-        public event EventHandler CloneClicked;
-
-        public event EventHandler StartSessionClicked;
-
-        public event EventHandler BackClicked;
+        public event EventHandler AddSetClicked = delegate { };
+        public event EventHandler AddExerciseClicked = delegate { };
+        public event EventHandler CloneClicked = delegate { };
+        public event EventHandler StartSessionClicked = delegate { };
+        public event EventHandler BackClicked = delegate { };
 
         public void Load(Common.NavigationData data)
         {
-            throw new NotImplementedException();
-        }
-
-        public IViewState State
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string GUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string ParentGUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            Presenter.Load(data);
         }
     }
 }

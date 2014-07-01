@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces.View;
+﻿using myPT.Core.Implementation.Presenter;
+using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,64 +10,21 @@ namespace myPT.Core.Implementation.View
 {
     class ExerciseView : IExerciseView
     {
-        public Interfaces.Model.IExercise Exercise
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        private ExercisePresenter _presenter;
+        public ExercisePresenter Presenter { get {return _presenter ?? (_presenter = new ExercisePresenter(this)); }}
 
-        public event EventHandler UpdateGoalClicked;
+        public Interfaces.Model.IExercise Exercise { get; set; }
+        public IViewState State { get; set; }
+        public string GUID { get; set; }
+        public string ParentGUID { get; set; }
 
-        public event EventHandler AddFieldClicked;
-
-        public event EventHandler BackClicked;
+        public event EventHandler UpdateGoalClicked = delegate { };
+        public event EventHandler AddFieldClicked = delegate {};
+        public event EventHandler BackClicked = delegate { };
 
         public void Load(Common.NavigationData data)
         {
             throw new NotImplementedException();
-        }
-
-        public IViewState State
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-
-        public string GUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string ParentGUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

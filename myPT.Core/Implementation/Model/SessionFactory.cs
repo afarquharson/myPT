@@ -35,7 +35,7 @@ namespace myPT.Core.Implementation.Model
             var flatProgram = program.Exercises.Flatten(); //Get the exercises
             foreach (var v in flatProgram.Values)
             {
-                result.Exercises.Add(GuidMaker.GetGUID(), v); //Add the exercises with new GUIDs as keys
+                result.Exercises.Add(GuidMaker.GetGUID(), v); //Add the exercises with new GUIDs as keys - allows us to trace back to parent Exercise
             }
             return result;
         }

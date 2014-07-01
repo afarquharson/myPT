@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface ITimelineView
+    interface ITimelineView : IChildView
     {
         Dictionary<string, IHistoryItem> History { get; set; }
 
-        event EventHandler BackClicked;
         event EventHandler ItemSelected;
         event EventHandler AddClicked;
     }

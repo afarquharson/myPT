@@ -1,0 +1,7 @@
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\bin\Debug\myPT.Console.exe
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\bin\Debug\myPT.Console.pdb
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\bin\Debug\myPT.Core.dll
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\bin\Debug\myPT.Core.pdb
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\obj\Debug\myPT.Console.csprojResolveAssemblyReference.cache
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\obj\Debug\myPT.Console.exe
+C:\Users\Alice\Documents\GitHub\myPT\myPT\myPT.ConsoleSkin\obj\Debug\myPT.Console.pdb

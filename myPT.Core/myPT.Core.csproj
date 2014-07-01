@@ -43,6 +43,13 @@
     <Compile Include="Common\GUIDMaker.cs" />
     <Compile Include="Implementation\Model\ExerciseTreeItem.cs" />
     <Compile Include="Implementation\Model\SessionFactory.cs" />
+    <Compile Include="Implementation\Presenter\ExercisePresenter.cs" />
+    <Compile Include="Implementation\Presenter\HomePresenter.cs" />
+    <Compile Include="Implementation\Presenter\NotePresenter.cs" />
+    <Compile Include="Implementation\Presenter\Presenter.cs" />
+    <Compile Include="Implementation\Presenter\ProgramPresenter.cs" />
+    <Compile Include="Implementation\Presenter\SessionPresenter.cs" />
+    <Compile Include="Implementation\Presenter\TimelinePresenter.cs" />
     <Compile Include="Interfaces\IGUIDMaker.cs" />
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
@@ -54,8 +61,8 @@
     <Compile Include="Implementation\Model\Session.cs" />
     <Compile Include="Implementation\Model\Proxy.cs" />
     <Compile Include="Implementation\Model\Writer.cs" />
-    <Compile Include="Implementation\Presenter\DataLoaderFactory.cs" />
-    <Compile Include="Implementation\Presenter\DataLoader.cs" />
+    <Compile Include="Implementation\Presenter\Loader\DataLoaderFactory.cs" />
+    <Compile Include="Implementation\Presenter\Loader\DataLoader.cs" />
     <Compile Include="Implementation\Model\DataModel.cs" />
     <Compile Include="Implementation\Presenter\Mapper\ExerciseMapper.cs" />
     <Compile Include="Implementation\Presenter\Mapper\HomeMapper.cs" />

@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Implementation.Model;
+using myPT.Core.Implementation.Presenter;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -11,10 +12,8 @@ namespace myPT.Core.Implementation.View
 {
     class NoteView : INoteView
     {
-        private IDataLoaderFactory _loader;
-        public IDataLoaderFactory Loader { get { return _loader ?? (_loader = new DataLoaderFactory()); } }
-        private IDataModel _model;
-        public IDataModel Model { get { return _model ?? (_model = new DataModel()); } }
+        private NotePresenter _presenter;
+        public NotePresenter Presenter { get {return _presenter ?? (_presenter = new NotePresenter(this)); }}
 
         public IHistoryItem Item { get; set; }
         public IViewState State { get; set; }
@@ -24,17 +23,9 @@ namespace myPT.Core.Implementation.View
         public event EventHandler DeleteNoteClicked = delegate { };
         public event EventHandler BackClicked = delegate { };
 
-        public NoteView() { }
-        public NoteView(IDataLoaderFactory loader, IDataModel model)
-            : this()
-        {
-            _loader = loader;
-            _model = model;
-        }
-
         public void Load(Common.NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, INoteView>(Model, this, data);
+            Presenter.Load(data);
         }
     }
 }
