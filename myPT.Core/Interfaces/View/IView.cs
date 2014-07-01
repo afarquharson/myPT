@@ -10,7 +10,7 @@ namespace myPT.Core.Interfaces.View
     interface IView
     {
         IViewState State { get; set; }
-        string GUID { get; set; } //The ID of the item being viewed
+        string GUID { get; set; } //The ID of the item being viewed - some duplucation here. Can we just use the id passed in?
         String ParentGUID { get; set; } //The ID of the parent item
         void Load(NavigationData data);
     }

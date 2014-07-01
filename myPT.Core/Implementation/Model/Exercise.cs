@@ -12,7 +12,6 @@ namespace myPT.Core.Implementation.Model
     public class Exercise : IExercise
     {
         public Dictionary<ExerciseFieldKey, string> Detail { get; set; }
-
         public string GUID { get; set; }
 
         public override bool Equals(object obj)

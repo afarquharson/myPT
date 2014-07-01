@@ -19,6 +19,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
         public void Setup()
         {
             AddToConfig<IDataModel, ITimelineView>((s, t) => MapHistoryItemsToView((IDataModel)s, (ITimelineView)t));
+            AddToConfig<ITimelineView, IDataModel>((s, t) => MapViewToModel((ITimelineView)s, (IDataModel)t));
+        }
+
+        private void MapViewToModel(ITimelineView timelineView, IDataModel dataModel)
+        {
+            dataModel.History = timelineView.History;
         }
 
         private void MapHistoryItemsToView(IDataModel model, ITimelineView historyView)

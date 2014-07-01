@@ -9,63 +9,18 @@ namespace myPT.Core.Implementation.View
 {
     class SessionView : ISessionView
     {
-        public Interfaces.Model.ISession Session
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public Interfaces.Model.ISession Session { get; set; }
+        public IViewState State { get; set; }
+        public string GUID { get; set; }
+        public string ParentGUID { get; set; }
 
         public event EventHandler AchievementValueChanged;
-
         public event EventHandler StartSessionClicked;
-
         public event EventHandler BackClicked;
 
         public void Load(Common.NavigationData data)
         {
             throw new NotImplementedException();
-        }
-
-        public IViewState State
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string GUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string ParentGUID
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

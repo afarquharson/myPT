@@ -18,11 +18,26 @@ namespace myPT.Core.Implementation.Presenter.Mapper
         public void Setup()
         {
             AddToConfig<IDataModel, INoteView>((s, t) => MapNoteToView((IDataModel)s, (INoteView)t));
+            AddToConfig<INoteView, IDataModel>((s, t) => MapViewToModel((INoteView)s, (IDataModel)s));
+        }
+
+        private void MapViewToModel(INoteView noteView, IDataModel dataModel)
+        {
+            IHistoryItem existingNote = null;
+            dataModel.History.TryGetValue(noteView.GUID, out existingNote);
+            if (existingNote != null)
+            {
+                dataModel.History[noteView.GUID] = noteView.Item;
+            }
+            else
+            {
+                dataModel.History.Add(noteView.GUID, noteView.Item);
+            }
         }
 
         private void MapNoteToView(IDataModel model, INoteView noteView)
         {
-            //noteView.Item = model.Hist;
+            noteView.Item = model.History[noteView.GUID];
         }
     }
 }

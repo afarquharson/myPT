@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Common\ExerciseFieldKey.cs" />
     <Compile Include="Common\GUIDMaker.cs" />
+    <Compile Include="Implementation\Model\ExerciseTreeItem.cs" />
+    <Compile Include="Implementation\Model\SessionFactory.cs" />
     <Compile Include="Interfaces\IGUIDMaker.cs" />
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
@@ -51,7 +53,6 @@
     <Compile Include="Implementation\Model\Program.cs" />
     <Compile Include="Implementation\Model\Session.cs" />
     <Compile Include="Implementation\Model\Proxy.cs" />
-    <Compile Include="Implementation\Model\Set.cs" />
     <Compile Include="Implementation\Model\Writer.cs" />
     <Compile Include="Implementation\Presenter\DataLoaderFactory.cs" />
     <Compile Include="Implementation\Presenter\DataLoader.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Implementation\View\TimelineView.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\IDataLoaderFactory.cs" />
+    <Compile Include="Interfaces\ISessionFactory.cs" />
     <Compile Include="Interfaces\Model\IDataItem.cs" />
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
     <Compile Include="Interfaces\Model\IProxy.cs" />

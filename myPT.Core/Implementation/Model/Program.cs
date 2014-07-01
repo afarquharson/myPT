@@ -11,9 +11,7 @@ namespace myPT.Core.Implementation.Model
     public class Program : IProgram
     {
         public string Name { get; set; }
-
-        public List<List<Set>> Exercises { get; set; }
-
+        public ExerciseTreeItem Exercises { get; set; }
         public string GUID { get; set; }
 
         public override bool Equals(object obj)
@@ -27,7 +25,7 @@ namespace myPT.Core.Implementation.Model
             {
                 return String.Equals(this.Name, other.Name)
                     && String.Equals(this.GUID, other.GUID)
-                    && this.Exercises.SequenceEqual(other.Exercises);
+                    && this.Exercises.Equals(other.Exercises);
             }
         }
 

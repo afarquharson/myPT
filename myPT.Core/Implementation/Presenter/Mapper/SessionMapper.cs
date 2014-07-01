@@ -18,6 +18,21 @@ namespace myPT.Core.Implementation.Presenter.Mapper
         public void Setup()
         {
             AddToConfig<IDataModel, ISessionView>((s, t) => MapSessionToView((IDataModel)s, (ISessionView)t));
+            AddToConfig<ISessionView, IDataModel>((s, t) => MapViewToModel((ISessionView)s, (IDataModel)t));
+        }
+
+        private void MapViewToModel(ISessionView sessionView, IDataModel dataModel)
+        {
+            ISession existingSession = null;
+            dataModel.Sessions.TryGetValue(sessionView.GUID, out existingSession);
+            if (existingSession != null)
+            {
+                dataModel.Sessions[sessionView.GUID] = sessionView.Session;//If Session already exists, save it back to the model
+            }
+            else
+            {
+                dataModel.Sessions.Add(sessionView.GUID, sessionView.Session);//If Session does not exist, add a new one
+            }
         }
 
         private void MapSessionToView(IDataModel model, ISessionView sessionView)

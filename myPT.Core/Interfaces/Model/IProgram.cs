@@ -11,6 +11,6 @@ namespace myPT.Core.Interfaces.Model
     public interface IProgram : IDataItem
     {
         String Name { get; set; }
-        List<List<Set>> Exercises { get; set; } //2D array to allow compund sets with reps
+        ExerciseTreeItem Exercises { get; set; } //Tree to allow compound sets with reps and recursive search
     }
 }

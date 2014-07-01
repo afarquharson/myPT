@@ -9,7 +9,7 @@ namespace myPT.Core.Interfaces.View
 {
     interface IViewState
     {
-        ViewState State { get; }
+        ViewState StateValue { get; }
         bool CanBack();
     }
 }

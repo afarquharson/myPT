@@ -24,38 +24,9 @@ namespace UnitTest
         [TestInitialize]
         public void Setup()
         {
-            Programs = new List<IProgram>
+            Programs = new List<IProgram>()
             {
-                new Program 
-                {
-                    Name = pName,
-                    GUID = pId,
-                    Exercises = new List<List<Set>>
-                    {
-                        new List<Set> 
-                        {
-                            { 
-                                new Set 
-                                {
-                                    Exercises = new Dictionary<string, IExercise> 
-                                    {
-                                        {eId,
-                                        new Exercise 
-                                        {
-                                            GUID = eId,
-                                            Detail = new Dictionary<ExerciseFieldKey, string> 
-                                            {
-                                                {ExerciseFieldKey.Description, eDescription}
-                                            }
-                                        }
-                                        }
-                                    },
-                                    Reps = 2
-                                }
-                            }
-                        }
-                    }
-                }
+                new Program()
             };
         }
 

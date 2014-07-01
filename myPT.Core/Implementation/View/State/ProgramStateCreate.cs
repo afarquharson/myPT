@@ -39,7 +39,7 @@ namespace myPT.Core.Implementation.View.State
             return false;
         }
 
-        public Common.ViewState State
+        public Common.ViewState StateValue
         {
             get { return Common.ViewState.Create; }
         }

@@ -63,22 +63,24 @@ namespace myPT.Core.Implementation.Model
 
         public IExercise GetExercise(bool isSession, string parentID, string ExerciseID)
         {
+            IExercise result = null;
             if (isSession)
             {
-                return Sessions[parentID].Exercises[ExerciseID];
+                Sessions[parentID].Exercises.TryGetValue(ExerciseID, out result);
             }
             else
             {
-                var program = Programs[parentID];
-                foreach(var compoundSet in program.Exercises)
+                var output = Programs[parentID].Exercises.FindExercise(ExerciseID);
+                if (output != null)
                 {
-                    foreach (var set in compoundSet)
-                    {
-                        return set.Exercises[ExerciseID]; //Refactored to use Dictionaries since we are looking up by value
-                    }
+                    result = output.Exercises[ExerciseID];
+                }
+                else
+                {
+                    result = null;
                 }
             }
-            return null;
+            return result;
         }
 
         public void SaveAll()

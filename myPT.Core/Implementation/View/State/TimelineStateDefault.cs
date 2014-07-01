@@ -19,7 +19,7 @@ namespace myPT.Core.Implementation.View.State
             return true;
         }
 
-        public Common.ViewState State
+        public Common.ViewState StateValue
         {
             get { return Common.ViewState.Default; }
         }

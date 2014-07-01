@@ -18,6 +18,9 @@ namespace myPT.Core.Implementation.View
         public IDataModel Model {get {return _model ?? (_model = new DataModel());}}
 
         public Dictionary<string, IProgram> Programs { get; set; }
+        public IViewState State { get; set; }
+        public string GUID { get; set; }
+        public string ParentGUID { get; set; }
 
         public event EventHandler SettingsClicked = delegate { };
         public event EventHandler AddProgramClicked = delegate { };
@@ -25,7 +28,6 @@ namespace myPT.Core.Implementation.View
         public event EventHandler ItemSelected = delegate { };
 
         public HomeView() { }
-
         public HomeView(IDataLoaderFactory loader, IDataModel model)
             : this()
         {
@@ -37,11 +39,5 @@ namespace myPT.Core.Implementation.View
         {
             Loader.GetLoader(data).Load<IDataModel, IHomeView>(Model, this, data);
         }
-
-        public IViewState State { get; set; }
-
-        public string GUID { get; set; }
-
-        public string ParentGUID { get; set; }
     }
 }
