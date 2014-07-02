@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class ExercisePresenter : Presenter
+    public class ExercisePresenter : Presenter
     {
         private IExerciseView View;
 
@@ -35,7 +35,8 @@ namespace myPT.Core.Implementation.Presenter
 
         public void Load(NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, IExerciseView>(Model, View, data);
+            base._model = data.Model; //Use this model from now on
+            Loader.GetLoader(data).Load<IDataModel, IExerciseView>(View, data);
         }
 
         void View_UpdateGoalClicked(object sender, EventArgs e)

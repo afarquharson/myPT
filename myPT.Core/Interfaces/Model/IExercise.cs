@@ -11,5 +11,6 @@ namespace myPT.Core.Interfaces.Model
     public interface IExercise : IDataItem
     {
         Dictionary<ExerciseFieldKey, String> Detail { get; set; }
+        KeyValuePair<ExerciseFieldKey, String> Goal { get; set; }
     }
 }

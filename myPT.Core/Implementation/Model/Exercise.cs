@@ -12,7 +12,19 @@ namespace myPT.Core.Implementation.Model
     public class Exercise : IExercise
     {
         public Dictionary<ExerciseFieldKey, string> Detail { get; set; }
+        public KeyValuePair<ExerciseFieldKey, string> Goal { get; set; }
         public string GUID { get; set; }
+
+        public Dictionary<string, string> Print()
+        {
+            var result = new Dictionary<string, string>();
+            foreach (var d in Detail)
+            {
+                result.Add(d.Key.ToString(), d.Value);
+            }
+            result.Add("Goal", String.Format("{0} - {1}", Goal.Key.ToString(), Goal.Value));
+            return result;
+        }
 
         public override bool Equals(object obj)
         {

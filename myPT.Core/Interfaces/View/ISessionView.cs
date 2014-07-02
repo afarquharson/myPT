@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface ISessionView : IChildView
+    public interface ISessionView : IView
     {
         ISession Session { get; set; }
         event EventHandler AchievementValueChanged;
         event EventHandler StartSessionClicked;
+        event EventHandler ExerciseClicked;
     }
 }

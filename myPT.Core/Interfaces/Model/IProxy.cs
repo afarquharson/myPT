@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IProxy
+    public interface IProxy
     {
         Dictionary<string, IProgram> Programs { get; set; }
         Dictionary<string, ISession> Sessions { get; set; }

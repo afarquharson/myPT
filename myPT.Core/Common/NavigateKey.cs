@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    enum NavigateKey
+    public enum NavigateKey
     {
         ToProgramCreate, 
         ToProgramUpdate, 
@@ -14,10 +14,11 @@ namespace myPT.Core.Common
         ToExerciseUpdate,
         ToExerciseComplete,
         ToSessionCreate, 
-        ToActivity, 
+        ToActivityReadOnly, 
         ToTimeline, 
         ToSessionReadOnly, 
         ToNote,
-        ToHome
+        ToHome,
+        ToActivityUpdate
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class SessionPresenter : Presenter
+    public class SessionPresenter : Presenter
     {
         private ISessionView View;
 
@@ -34,7 +34,8 @@ namespace myPT.Core.Implementation.Presenter
 
         public void Load(NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, ISessionView>(Model, View, data);
+            base._model = data.Model; //Use this model from now on
+            Loader.GetLoader(data).Load<IDataModel, ISessionView>(View, data);
         }
 
         void View_StartSessionClicked(object sender, EventArgs e)

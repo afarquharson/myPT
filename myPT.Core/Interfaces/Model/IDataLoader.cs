@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IDataLoader
+    public interface IDataLoader
     {
-        void Load<TModel, TView>(TModel model, TView view, NavigationData data)
+        void Load<TModel, TView>(TView view, NavigationData data)
             where TModel : IDataModel
             where TView : IView;
 

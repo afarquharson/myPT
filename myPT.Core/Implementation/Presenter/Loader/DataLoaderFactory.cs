@@ -28,7 +28,9 @@ namespace myPT.Core.Implementation
                 {NavigateKey.ToSessionCreate, () => new DataLoader(new SessionMapper(), new SessionStateCreate())},
                 {NavigateKey.ToSessionReadOnly, () => new DataLoader(new SessionMapper(), new SessionStateReadOnly())},
                 {NavigateKey.ToHome, () => new DataLoader(new HomeMapper(), new HomeStateDefault())},
-                {NavigateKey.ToTimeline, () => new DataLoader(new TimelineMapper(), new TimelineStateDefault())}
+                {NavigateKey.ToTimeline, () => new DataLoader(new TimelineMapper(), new TimelineStateDefault())},
+                {NavigateKey.ToActivityReadOnly, () => new DataLoader(new ActivityMapper(), new ActivityStateReadOnly())},
+                {NavigateKey.ToActivityUpdate, () => new DataLoader(new ActivityMapper(), new ActivityStateUpdate())}
             };
         }
 

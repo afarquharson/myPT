@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Model
 {
-    class DataModel : IDataModel
+    public class DataModel : IDataModel
     {
         Dictionary<string, IProgram> _cachedPrograms;
         Dictionary<string, ISession> _cachedSessions;
@@ -61,25 +61,24 @@ namespace myPT.Core.Implementation.Model
             }
         }
 
-        public IExercise GetExercise(bool isSession, string parentID, string ExerciseID)
+        public IExercise GetExercise(string ProgramID, string ExerciseID)
         {
             IExercise result = null;
-            if (isSession)
+            try
             {
-                Sessions[parentID].Exercises.TryGetValue(ExerciseID, out result);
+                result = Programs[ProgramID].Exercises.FindExercise(ExerciseID);
             }
-            else
+            finally
             {
-                var output = Programs[parentID].Exercises.FindExercise(ExerciseID);
-                if (output != null)
-                {
-                    result = output.Exercises[ExerciseID];
-                }
-                else
-                {
-                    result = null;
-                }
+                
             }
+            return result;
+        }
+
+        public IActivity GetActivity(string SessionID, string ActivityID)
+        {
+            IActivity result = null;
+            result = Sessions[SessionID].Activities[ActivityID];
             return result;
         }
 

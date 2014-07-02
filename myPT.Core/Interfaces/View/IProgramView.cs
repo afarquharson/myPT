@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IProgramView : IChildView
+    public interface IProgramView : IView
     {
         IProgram Program { get; set; }
         event EventHandler AddSetClicked;

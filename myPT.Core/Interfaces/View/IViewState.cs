@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IViewState
+    public interface IViewState
     {
         ViewState StateValue { get; }
-        bool CanBack();
+        String TopLeft { get; }
+        String TopRight { get; }
+        String LowerLeft { get; }
+        String LowerRight { get; }
+        String ItemSelect { get; }
     }
 }

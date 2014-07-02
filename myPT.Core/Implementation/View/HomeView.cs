@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View
 {
-    class HomeView : IHomeView
+    public class HomeView : IHomeView
     {
         public Dictionary<string, IProgram> Programs { get; set; }
         public IViewState State { get; set; }
@@ -25,10 +25,29 @@ namespace myPT.Core.Implementation.View
         public event EventHandler AddProgramClicked = delegate { };
         public event EventHandler TimelineClicked = delegate { };
         public event EventHandler ItemSelected = delegate { };
+        public event EventHandler BackClicked = delegate { };
 
         public void Load(NavigationData data)
         {
             Presenter.Load(data);
+        }
+
+        public void Execute(CommandKey command, string[] data)
+        {
+
+        }
+
+        public Dictionary<string, string> List
+        {
+            get 
+            { 
+                var result = new Dictionary<string, string>();
+                foreach (var p in Programs)
+                {
+                    result.Add(p.Key, p.Value.Name);
+                }
+                return result;
+            }
         }
     }
 }

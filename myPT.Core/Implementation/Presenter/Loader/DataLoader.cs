@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces;
+﻿using myPT.Core.Common;
+using myPT.Core.Interfaces;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -20,14 +21,14 @@ namespace myPT.Core.Implementation.Presenter
             _state = state;
         }
 
-        public void Load<TModel, TView>(TModel model, TView view, Common.NavigationData data)
+        public void Load<TModel, TView>(TView view, NavigationData data)
             where TModel : IDataModel
             where TView : IView
         {
             view.State = _state;
             view.GUID = data.ToItem;
             view.ParentGUID = data.FromItem;
-            _mapper.Map<TModel, TView>(model, view);
+            _mapper.Map<TModel, TView>((TModel)data.Model, view);
         }
 
         public void Save<TView, TModel>(TView view, TModel model)

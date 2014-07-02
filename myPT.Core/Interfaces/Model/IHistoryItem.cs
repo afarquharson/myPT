@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    interface IHistoryItem : IDataItem
+    public interface IHistoryItem : IDataItem
     {
         DateTime Date { get; set; }
         String Summary { get; set; }

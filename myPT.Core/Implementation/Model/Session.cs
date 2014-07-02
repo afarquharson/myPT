@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Model
 {
-    class Session : ISession
+    public class Session : ISession
     {
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -20,7 +20,17 @@ namespace myPT.Core.Implementation.Model
         public string Summary { get; set; }
         public string GUID { get; set; }
         public string ProgramGUID { get; set; }
-        public Dictionary<string, IExercise> Exercises { get; set; }
+        public Dictionary<string, IActivity> Activities { get; set; }
+
+        public Dictionary<string, string> Print()
+        {
+            var result = new Dictionary<string, string>();
+            foreach (var a in Activities)
+            {
+                result.Add(a.Value.GUID, a.Value.Exercise.Detail[ExerciseFieldKey.Description]);
+            }
+            return result;
+        }
 
         public override bool Equals(object obj)
         {
@@ -34,7 +44,7 @@ namespace myPT.Core.Implementation.Model
                 return 
                     this.StartTime == other.StartTime 
                     && this.EndTime == other.EndTime 
-                    && this.Exercises.SequenceEqual(other.Exercises)
+                    && this.Activities.SequenceEqual(other.Activities)
                     && String.Equals(this.Summary, other.Summary) 
                     && String.Equals(this.GUID, other.GUID);
             }

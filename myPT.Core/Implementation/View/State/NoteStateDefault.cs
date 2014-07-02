@@ -1,4 +1,4 @@
-﻿using myPT.Core.Interfaces.View.State;
+﻿using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,31 +7,36 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View.State
 {
-    class NoteStateDefault : INoteState
+    class NoteStateDefault : IViewState
     {
-        public bool CanEditDate()
-        {
-            return true;
-        }
-
-        public bool CanEditNote()
-        {
-            return true;
-        }
-
-        public bool CanDelete()
-        {
-            return true;
-        }
-
         public Common.ViewState StateValue
         {
             get { return Common.ViewState.Default; }
         }
 
-        public bool CanBack()
+        public string TopLeft
         {
-            return true;
+            get { return "Back"; }
+        }
+
+        public string TopRight
+        {
+            get { return String.Empty; }
+        }
+
+        public string LowerLeft
+        {
+            get { return String.Empty; }
+        }
+
+        public string LowerRight
+        {
+            get { return "Delete"; }
+        }
+
+        public string ItemSelect
+        {
+            get { return String.Empty; }
         }
     }
 }

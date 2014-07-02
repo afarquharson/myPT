@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IExerciseView : IChildView
+    public interface IExerciseView : IView
     {
         IExercise Exercise { get; set; }
         event EventHandler UpdateGoalClicked;

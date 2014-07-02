@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface INoteView : IChildView
+    public interface INoteView : IView
     {
         IHistoryItem Item { get; set; }
 

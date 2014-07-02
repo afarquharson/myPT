@@ -15,9 +15,6 @@ namespace myPT.Core.Common
         Weight,
         Time,
         Distance,
-        Laps,
         Comment,
-        Goal,
-        Achievement
     }
 }

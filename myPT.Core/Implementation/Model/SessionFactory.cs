@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Model
 {
-    class SessionFactory : ISessionFactory
+    public class SessionFactory : ISessionFactory
     {
         private IGUIDMaker _maker { get; set; }
         public IGUIDMaker GuidMaker { get { return _maker ?? new GUIDMaker(); } }
@@ -30,12 +30,18 @@ namespace myPT.Core.Implementation.Model
                 EndTime = DateTime.MinValue,
                 Summary = String.Format("{0} - {1}", DateTime.Now.Date.ToString(), program.Name),
                 ProgramGUID = program.GUID,
-                Exercises = new Dictionary<string,IExercise>()
+                Activities = new Dictionary<string,IActivity>()
             };
             var flatProgram = program.Exercises.Flatten(); //Get the exercises
-            foreach (var v in flatProgram.Values)
+            foreach (var v in flatProgram)
             {
-                result.Exercises.Add(GuidMaker.GetGUID(), v); //Add the exercises with new GUIDs as keys - allows us to trace back to parent Exercise
+                //Make an Activity using the exercise
+                var tmp = new Activity()
+                {
+                    GUID =  GuidMaker.GetGUID(),
+                    Exercise = v
+                };
+                result.Activities.Add(tmp.GUID, tmp); //New GUIDs as keys, but Exercise remembers its own GUID field - allows us to trace back to parent Exercise
             }
             return result;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    class GUIDMaker : IGUIDMaker
+    public class GUIDMaker : IGUIDMaker
     {
         public string GetGUID()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    enum ViewState
+    public enum ViewState
     {
         Default,
         Create,

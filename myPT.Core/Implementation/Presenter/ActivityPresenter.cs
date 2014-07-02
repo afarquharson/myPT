@@ -9,40 +9,35 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    public class NotePresenter : Presenter
+    public class ActivityPresenter : Presenter
     {
-        private INoteView View;
+        private IActivityView View;
 
-        public NotePresenter(INoteView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model) 
+        public ActivityPresenter(IActivityView view, IDataLoaderFactory loader, IDataModel model)
+            : base(loader, model)
         {
             Setup(view);
         }
 
-        public NotePresenter(INoteView view) : base()
+        public ActivityPresenter(IActivityView view)
         {
             Setup(view);
         }
 
-        public void Setup(INoteView view)
+        private void Setup(IActivityView view)
         {
             View = view;
 
             View.BackClicked += View_BackClicked;
-            View.DeleteNoteClicked += View_DeleteNoteClicked;
         }
 
         public void Load(NavigationData data)
         {
             base._model = data.Model; //Use this model from now on
-            Loader.GetLoader(data).Load<IDataModel, INoteView>(View, data);
+            Loader.GetLoader(data).Load<IDataModel, IActivityView>(View, data);
         }
 
-        void View_DeleteNoteClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
+        private void View_BackClicked(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }

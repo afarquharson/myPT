@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    public interface IGUIDMaker
+    public enum CommandKey
     {
-        String GetGUID();
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight,
+        ItemSelect
     }
 }

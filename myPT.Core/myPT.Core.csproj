@@ -39,17 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CommandKey.cs" />
     <Compile Include="Common\ExerciseFieldKey.cs" />
     <Compile Include="Common\GUIDMaker.cs" />
+    <Compile Include="Implementation\Model\Activity.cs" />
     <Compile Include="Implementation\Model\ExerciseTreeItem.cs" />
     <Compile Include="Implementation\Model\SessionFactory.cs" />
+    <Compile Include="Implementation\Presenter\ActivityPresenter.cs" />
     <Compile Include="Implementation\Presenter\ExercisePresenter.cs" />
     <Compile Include="Implementation\Presenter\HomePresenter.cs" />
+    <Compile Include="Implementation\Presenter\Mapper\ActivityMapper.cs" />
     <Compile Include="Implementation\Presenter\NotePresenter.cs" />
     <Compile Include="Implementation\Presenter\Presenter.cs" />
     <Compile Include="Implementation\Presenter\ProgramPresenter.cs" />
     <Compile Include="Implementation\Presenter\SessionPresenter.cs" />
     <Compile Include="Implementation\Presenter\TimelinePresenter.cs" />
+    <Compile Include="Implementation\View\ActivityView.cs" />
+    <Compile Include="Implementation\View\State\ActivityStateReadOnly.cs" />
+    <Compile Include="Implementation\View\State\ActivityStateUpdate.cs" />
     <Compile Include="Interfaces\IGUIDMaker.cs" />
     <Compile Include="Common\Mapper.cs" />
     <Compile Include="Common\NavigateKey.cs" />
@@ -92,9 +99,10 @@
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
     <Compile Include="Interfaces\Model\IProxy.cs" />
     <Compile Include="Interfaces\Model\IDataWriter.cs" />
-    <Compile Include="Interfaces\View\IChildView.cs" />
     <Compile Include="Interfaces\Model\IDataModel.cs" />
     <Compile Include="Interfaces\Model\IExercise.cs" />
+    <Compile Include="Interfaces\Model\IActivity.cs" />
+    <Compile Include="Interfaces\View\IActivityView.cs" />
     <Compile Include="Interfaces\View\IExerciseView.cs" />
     <Compile Include="Interfaces\Model\IHistoryItem.cs" />
     <Compile Include="Interfaces\View\IHomeView.cs" />
@@ -105,13 +113,7 @@
     <Compile Include="Interfaces\View\ISessionView.cs" />
     <Compile Include="Interfaces\View\ITimelineView.cs" />
     <Compile Include="Interfaces\View\IView.cs" />
-    <Compile Include="Interfaces\View\State\IExerciseState.cs" />
-    <Compile Include="Interfaces\View\State\IHomeState.cs" />
-    <Compile Include="Interfaces\View\State\INoteState.cs" />
-    <Compile Include="Interfaces\View\State\IProgramState.cs" />
-    <Compile Include="Interfaces\View\State\ISessionState.cs" />
-    <Compile Include="Interfaces\View\State\ITimelineState.cs" />
-    <Compile Include="Interfaces\View\State\IViewState.cs" />
+    <Compile Include="Interfaces\View\IViewState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

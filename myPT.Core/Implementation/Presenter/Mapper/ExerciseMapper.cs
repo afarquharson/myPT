@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces.Model;
+﻿using myPT.Core.Common;
+using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,13 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapExerciseToView(IDataModel model, IExerciseView exerciseView)
         {
-            exerciseView.Exercise = model.GetExercise((exerciseView.State.StateValue == Common.ViewState.Complete), exerciseView.ParentGUID, exerciseView.GUID);
+            exerciseView.Exercise = model.GetExercise(exerciseView.ParentGUID, exerciseView.GUID);
         }
 
         private void MapViewToModel(IExerciseView exerciseView, IDataModel model)
         {
-            var existingExercise = model.GetExercise((exerciseView.State.StateValue == Common.ViewState.Complete), exerciseView.ParentGUID, exerciseView.GUID);
-            existingExercise = exerciseView.Exercise; //Update existing exercise
-
-            //Shouldn't need to add a *new* exercise from the Exercise screen - should only be created as part of a new Program or Session.
+            var existingExercise = model.GetExercise(exerciseView.ParentGUID, exerciseView.GUID);
+            existingExercise = exerciseView.Exercise; //Update existing exercise only - don't create new ones
         }
     }
 }

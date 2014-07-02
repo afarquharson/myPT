@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IHomeView : IView
+    public interface IHomeView : IView
     {
         Dictionary<string, IProgram> Programs { get; set; }
 

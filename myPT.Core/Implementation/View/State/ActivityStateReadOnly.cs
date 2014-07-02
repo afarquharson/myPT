@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View.State
 {
-    class TimelineStateDefault : IViewState
+    class ActivityStateReadOnly : IViewState
     {
         public Common.ViewState StateValue
         {
-            get { return Common.ViewState.Default; }
+            get { return Common.ViewState.ReadOnly; }
         }
 
         public string TopLeft
@@ -31,12 +31,12 @@ namespace myPT.Core.Implementation.View.State
 
         public string LowerRight
         {
-            get { return "AddNote"; }
+            get { return String.Empty; }
         }
 
         public string ItemSelect
         {
-            get { return "ViewHistoryItem"; }
+            get { return String.Empty; }
         }
     }
 }

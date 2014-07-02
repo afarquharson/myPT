@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class ProgramPresenter : Presenter
+    public class ProgramPresenter : Presenter
     {
         private IProgramView View;
 
@@ -38,7 +38,8 @@ namespace myPT.Core.Implementation.Presenter
 
         public void Load(NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, IProgramView>(Model, View, data);
+            base._model = data.Model; //Use this model from now on
+            Loader.GetLoader(data).Load<IDataModel, IProgramView>(View, data);
         }
 
         void View_StartSessionClicked(object sender, EventArgs e)

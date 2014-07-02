@@ -1,4 +1,4 @@
-﻿using myPT.Core.Interfaces.View.State;
+﻿using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,31 +7,36 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View.State
 {
-    class HomeStateDefault : IHomeState
+    class HomeStateDefault : IViewState
     {
-        public bool CanEditSettings()
-        {
-            return true;
-        }
-
-        public bool CanStartSession()
-        {
-            return true;
-        }
-
-        public bool CanViewTimeline()
-        {
-            return true;
-        }
-
         public Common.ViewState StateValue
         {
             get { return Common.ViewState.Default; }
         }
 
-        public bool CanBack()
+        public string TopLeft
         {
-            return false;
+            get { return "Back"; }
+        }
+
+        public string TopRight
+        {
+            get { return "About"; }
+        }
+
+        public string LowerLeft
+        {
+            get { return "AddProgram"; }
+        }
+
+        public string LowerRight
+        {
+            get { return "ViewTimeline"; }
+        }
+
+        public string ItemSelect
+        {
+            get { return "ViewProgram"; }
         }
     }
 }

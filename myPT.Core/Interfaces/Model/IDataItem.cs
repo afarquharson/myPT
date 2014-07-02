@@ -9,5 +9,6 @@ namespace myPT.Core.Interfaces.Model
     public interface IDataItem
     {
         String GUID { get; set; }
+        Dictionary<String, String> Print();
     }
 }

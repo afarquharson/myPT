@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Model
 {
-    class HistoryItem : IHistoryItem
+    public class HistoryItem : IHistoryItem
     {
         public DateTime Date { get; set; }
         public string Summary { get; set; }
@@ -34,6 +34,16 @@ namespace myPT.Core.Implementation.Model
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public Dictionary<string, string> Print()
+        {
+            var result = new Dictionary<String, String>();
+
+            result.Add("Date",Date.ToString());
+            result.Add("Summary", Summary);
+
+            return result;
         }
     }
 }

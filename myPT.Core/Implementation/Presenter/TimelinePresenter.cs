@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class TimelinePresenter : Presenter
+    public class TimelinePresenter : Presenter
     {
         private ITimelineView View;
 
@@ -34,7 +34,8 @@ namespace myPT.Core.Implementation.Presenter
 
         public void Load(NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, ITimelineView>(Model, View, data);
+            base._model = data.Model; //Use this model from now on
+            Loader.GetLoader(data).Load<IDataModel, ITimelineView>(View, data);
         }
 
         void View_ItemSelected(object sender, EventArgs e)

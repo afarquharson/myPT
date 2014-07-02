@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface IView
+    public interface IView
     {
-        IViewState State { get; set; }
-        string GUID { get; set; } //The ID of the item being viewed - some duplucation here. Can we just use the id passed in?
+        Dictionary<string, string> List { get; } //The items being displayed
+        IViewState State { get; set; } //The buttons available
+        string GUID { get; set; } //The ID of the item being viewed
         String ParentGUID { get; set; } //The ID of the parent item
+        
+        event EventHandler BackClicked;
+        
         void Load(NavigationData data);
+
+        void Execute(CommandKey command, string[] data);
     }
 }

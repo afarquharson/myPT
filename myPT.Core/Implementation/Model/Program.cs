@@ -33,5 +33,18 @@ namespace myPT.Core.Implementation.Model
         {
             return base.GetHashCode();
         }
+
+        public Dictionary<string, string> Print()
+        {
+            var result = new Dictionary<string, string>();
+            var program = Exercises.PrintTree();
+            var i = 0;
+            foreach (var e in program)
+            {
+                result.Add(i.ToString(), e);//Just key by index, this time
+                i++;
+            }
+            return result;
+        }
     }
 }

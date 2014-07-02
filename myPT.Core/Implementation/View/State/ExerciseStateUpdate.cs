@@ -1,4 +1,4 @@
-﻿using myPT.Core.Interfaces.View.State;
+﻿using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,37 +7,36 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View.State
 {
-    class ExerciseStateUpdate : IExerciseState
+    class ExerciseStateUpdate : IViewState
     {
-
-        public bool CanEditDetail()
-        {
-            return false;
-        }
-
-        public bool CanAddField()
-        {
-            return false;
-        }
-
-        public bool CanEditGoalValue()
-        {
-            return true;
-        }
-
-        public bool CanEditAchievementValue()
-        {
-            return false;
-        }
-
         public Common.ViewState StateValue
         {
             get { return Common.ViewState.Update; }
         }
 
-        public bool CanBack()
+        public string TopLeft
         {
-            return true;
+            get { return "Back"; }
+        }
+
+        public string TopRight
+        {
+            get { return String.Empty; }
+        }
+
+        public string LowerLeft
+        {
+            get { return String.Empty; }
+        }
+
+        public string LowerRight
+        {
+            get { return String.Empty; }
+        }
+
+        public string ItemSelect
+        {
+            get { return String.Empty; }
         }
     }
 }

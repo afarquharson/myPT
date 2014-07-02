@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.View
 {
-    interface ITimelineView : IChildView
+    public interface ITimelineView : IView
     {
         Dictionary<string, IHistoryItem> History { get; set; }
 

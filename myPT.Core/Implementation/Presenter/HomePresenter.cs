@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class HomePresenter : Presenter
+    public class HomePresenter : Presenter
     {
         private IHomeView View;
 
@@ -26,30 +26,12 @@ namespace myPT.Core.Implementation.Presenter
         public void Setup(IHomeView view)
         {
             View = view;
-
-            View.AddProgramClicked += view_AddProgramClicked;
-            View.ItemSelected += view_ItemSelected;
-            View.SettingsClicked += view_SettingsClicked;
         }
 
         public void Load(NavigationData data)
         {
-            Loader.GetLoader(data).Load<IDataModel, IHomeView>(Model, View, data);
-        }
-
-        void view_SettingsClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void view_ItemSelected(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void view_AddProgramClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            base._model = data.Model; //Use this model from now on
+            Loader.GetLoader(data).Load<IDataModel, IHomeView>(View, data);
         }
     }
 }

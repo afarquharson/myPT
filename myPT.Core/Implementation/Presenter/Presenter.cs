@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.Presenter
 {
-    class Presenter
+    public class Presenter
     {
         private IDataLoaderFactory _loader;
         public IDataLoaderFactory Loader { get { return _loader ?? (_loader = new DataLoaderFactory()); } }
-        private IDataModel _model;
-        public IDataModel Model { get { return _model ?? (_model = new DataModel()); } }
+        internal IDataModel _model;
+        public IDataModel Model { get { return _model; } } //DON'T create a new Model every time
 
         public Presenter() { }
         public Presenter(IDataLoaderFactory loader, IDataModel model)

@@ -16,7 +16,7 @@ namespace myPT.Core.Implementation.Model
             get { return _exercises; } 
             set 
             { 
-                if (Children.Count() > 0) 
+                if (Children != null && Children.Count() > 0) 
                 { 
                     throw new Exception("Cannot add exercises to a set with children."); 
                 } 
@@ -33,7 +33,7 @@ namespace myPT.Core.Implementation.Model
             get { return _children; }
             set
             {
-                if (Exercises.Count > 0)
+                if (Exercises != null && Exercises.Count > 0)
                 {
                     throw new Exception("Cannot add child sets to a set with exercises.");
                 }
@@ -50,9 +50,9 @@ namespace myPT.Core.Implementation.Model
             Children = new List<ExerciseTreeItem>();
         }
 
-        public ExerciseTreeItem FindExercise(string GUID)
+        public IExercise FindExercise(string GUID)
         {
-            return Find(this, GUID);
+            return Find(this, GUID).Exercises[GUID];
         }
 
         private static ExerciseTreeItem Find(ExerciseTreeItem node, string GUID)
@@ -71,14 +71,14 @@ namespace myPT.Core.Implementation.Model
             return null;
         }
 
-        public Dictionary<string, IExercise> Flatten()
+        public List<IExercise> Flatten()
         {
             return Flatten(this);
         }
 
-        private static Dictionary<string, IExercise> Flatten(ExerciseTreeItem node)
+        private static List<IExercise> Flatten(ExerciseTreeItem node)
         {
-            var thisLevel = new Dictionary<string, IExercise>();
+            var thisLevel = new List<IExercise>();
             if (node.Children.Count > 0)
             {
                 //If there are children, add them all for each rep
@@ -86,19 +86,47 @@ namespace myPT.Core.Implementation.Model
                 {
                     foreach (var child in node.Children)
                     {
-                        thisLevel.Concat(Flatten(child));
+                        thisLevel.AddRange(Flatten(child));
                     }
                 }
-                return thisLevel;
             }
             else
             {
                 for (var i = 0; i < node.Reps; i++) //If there are no children, add the exercises at this level for each rep
                 {
-                    thisLevel.Concat(node.Exercises);
+                    thisLevel.AddRange(node.Exercises.Values.ToList());
                 }
-                return thisLevel;
             }
+            return thisLevel;
+        }
+
+        internal List<string> PrintTree()
+        {
+            return Print(this, string.Empty);
+        }
+
+        private static List<string> Print(ExerciseTreeItem node, string prefix)
+        {
+            var thisLevel = new List<string>();
+            if (node.Reps > 0) thisLevel.Add(String.Format("{0}x{1}", prefix, node.Reps.ToString()));
+            if (node.Children.Count > 0)
+            {
+                //If there are children, update the prefix and traverse
+                foreach(var child in node.Children)
+                {
+                    thisLevel.AddRange(Print(child, String.Format(" {0}",prefix))); 
+                }
+            }
+            else
+            {
+                //If there are no children, add each exercise description and reps
+                foreach (var e in node.Exercises)
+                {
+                    thisLevel.Add(String.Format("{0}{1} x{2}", prefix, e.Value.Detail[Common.ExerciseFieldKey.Description], e.Value.Detail[Common.ExerciseFieldKey.MaxReps]));
+                }
+            }
+            if (node.Reps > 0) thisLevel.Add(prefix);
+            return thisLevel;
         }
 
         public override bool Equals(object obj)

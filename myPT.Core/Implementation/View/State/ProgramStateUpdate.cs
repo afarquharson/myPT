@@ -1,4 +1,4 @@
-﻿using myPT.Core.Interfaces.View.State;
+﻿using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,46 +7,36 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Implementation.View.State
 {
-    class ProgramStateUpdate : IProgramState
+    class ProgramStateUpdate : IViewState
     {
-        public bool CanAddSet()
-        {
-            return false;
-        }
-
-        public bool CanAddExercise()
-        {
-            return false;
-        }
-
-        public bool CanAddExerciseToSet()
-        {
-            return false;
-        }
-
-        public bool CanUpdateGoals()
-        {
-            return false;
-        }
-
-        public bool CanCloneProgram()
-        {
-            return false;
-        }
-
-        public bool CanStartSession()
-        {
-            return false;
-        }
-
         public Common.ViewState StateValue
         {
             get { return Common.ViewState.Update; }
         }
 
-        public bool CanBack()
+        public string TopLeft
         {
-            return true;
+            get { return "Back"; }
+        }
+
+        public string TopRight
+        {
+            get { return String.Empty; }
+        }
+
+        public string LowerLeft
+        {
+            get { return "CloneProgram"; }
+        }
+
+        public string LowerRight
+        {
+            get { return "StartSession"; }
+        }
+
+        public string ItemSelect
+        {
+            get { return "EditExerciseGoal"; }
         }
     }
 }

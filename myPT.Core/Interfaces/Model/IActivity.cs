@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Interfaces.Model
 {
-    public interface IDataLoaderFactory
+    public interface IActivity : IDataItem
     {
-        IDataLoader GetLoader(NavigationData data);
+        IExercise Exercise { get; set; }
+        String Achievement { get; set; }
     }
 }
