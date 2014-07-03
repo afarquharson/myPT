@@ -8,17 +8,16 @@ namespace myPT.Core.Common
 {
     public enum NavigateKey
     {
-        ToProgramCreate, 
-        ToProgramUpdate, 
-        ToExerciseCreate, 
-        ToExerciseUpdate,
-        ToExerciseComplete,
-        ToSessionCreate, 
-        ToActivityReadOnly, 
-        ToTimeline, 
-        ToSessionReadOnly, 
-        ToNote,
-        ToHome,
-        ToActivityUpdate
+        ActivityReadOnly,
+        ActivityUpdate,
+        ProgramCreate, 
+        ProgramUpdate, 
+        ExerciseCreate, 
+        ExerciseUpdate,
+        SessionCreate,
+        SessionReadOnly, 
+        Timeline, 
+        Note,
+        Home
     }
 }

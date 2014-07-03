@@ -38,12 +38,7 @@ namespace myPT.Core.Implementation.View
         {
             get 
             {
-                var result = new Dictionary<string, string>();
-                foreach (var d in Exercise.Detail)
-                {
-                    result.Add(d.Key.ToString(), d.Value);
-                }
-                return result;
+                return Exercise.Print();
             }
         }
     }

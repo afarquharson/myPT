@@ -1,4 +1,5 @@
-﻿using myPT.Core.Interfaces.View;
+﻿using myPT.Core.Common;
+using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,29 +15,20 @@ namespace myPT.Core.Implementation.View.State
             get { return Common.ViewState.Update; }
         }
 
-        public string TopLeft
+        private Dictionary<CommandKey, CommandName> _commands;
+        public Dictionary<CommandKey, CommandName> Commands
         {
-            get { return "Back"; }
-        }
-
-        public string TopRight
-        {
-            get { return String.Empty; }
-        }
-
-        public string LowerLeft
-        {
-            get { return String.Empty; }
-        }
-
-        public string LowerRight
-        {
-            get { return String.Empty; }
-        }
-
-        public string ItemSelect
-        {
-            get { return String.Empty; }
+            get 
+            { 
+                return _commands ?? (_commands = new Dictionary<CommandKey,CommandName>
+                {
+                    {CommandKey.TopLeft, CommandName.Back},
+                    {CommandKey.TopRight, CommandName.None},
+                    {CommandKey.LowerLeft, CommandName.None},
+                    {CommandKey.LowerRight, CommandName.None},
+                    {CommandKey.ItemSelect, CommandName.None}
+                });
+            }
         }
     }
 }

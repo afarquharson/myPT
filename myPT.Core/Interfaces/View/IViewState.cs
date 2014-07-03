@@ -10,10 +10,6 @@ namespace myPT.Core.Interfaces.View
     public interface IViewState
     {
         ViewState StateValue { get; }
-        String TopLeft { get; }
-        String TopRight { get; }
-        String LowerLeft { get; }
-        String LowerRight { get; }
-        String ItemSelect { get; }
+        Dictionary<CommandKey, CommandName> Commands { get; }
     }
 }

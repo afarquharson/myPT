@@ -10,8 +10,8 @@ namespace myPT.Core.Common
     {
         TopLeft,
         TopRight,
-        BottomLeft,
-        BottomRight,
+        LowerLeft,
+        LowerRight,
         ItemSelect
     }
 }

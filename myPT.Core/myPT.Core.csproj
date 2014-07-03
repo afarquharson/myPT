@@ -40,11 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CommandKey.cs" />
+    <Compile Include="Common\CommandName.cs" />
     <Compile Include="Common\ExerciseFieldKey.cs" />
     <Compile Include="Common\GUIDMaker.cs" />
     <Compile Include="Implementation\Model\Activity.cs" />
     <Compile Include="Implementation\Model\ExerciseTreeItem.cs" />
     <Compile Include="Implementation\Model\SessionFactory.cs" />
+    <Compile Include="Implementation\Navigator.cs" />
     <Compile Include="Implementation\Presenter\ActivityPresenter.cs" />
     <Compile Include="Implementation\Presenter\ExercisePresenter.cs" />
     <Compile Include="Implementation\Presenter\HomePresenter.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Implementation\View\TimelineView.cs" />
     <Compile Include="Interfaces\IMapper.cs" />
     <Compile Include="Interfaces\IDataLoaderFactory.cs" />
+    <Compile Include="Interfaces\INavigator.cs" />
     <Compile Include="Interfaces\ISessionFactory.cs" />
     <Compile Include="Interfaces\Model\IDataItem.cs" />
     <Compile Include="Interfaces\Model\IDataLoader.cs" />
