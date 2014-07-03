@@ -29,7 +29,7 @@ namespace myPT.Core.Implementation.View
             Presenter.Load(data);
         }
 
-        public void Execute(CommandKey command, string[] data)
+        public NavigationData Execute(CommandKey command, string[] data)
         {
             throw new NotImplementedException();
         }

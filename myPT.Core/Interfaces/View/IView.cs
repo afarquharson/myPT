@@ -18,6 +18,6 @@ namespace myPT.Core.Interfaces.View
         
         void Load(NavigationData data);
 
-        void Execute(CommandKey command, string[] data);
+        NavigationData Execute(CommandKey command, string[] data);
     }
 }

@@ -10,9 +10,5 @@ namespace myPT.Core.Interfaces.View
     public interface IProgramView : IView
     {
         IProgram Program { get; set; }
-        event EventHandler AddSetClicked;
-        event EventHandler AddExerciseClicked;
-        event EventHandler CloneClicked;
-        event EventHandler StartSessionClicked;
     }
 }

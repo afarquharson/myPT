@@ -10,14 +10,24 @@ namespace myPT.Core.Common
     {
         ActivityReadOnly,
         ActivityUpdate,
-        ProgramCreate, 
-        ProgramUpdate, 
-        ExerciseCreate, 
+        ProgramCreate,
+        ProgramUpdate,
+        ExerciseCreate,
         ExerciseUpdate,
         SessionCreate,
-        SessionReadOnly, 
-        Timeline, 
+        SessionReadOnly,
+        Timeline,
         Note,
-        Home
+        Home,
+        None,
+        PreviousActivity, //This and below are 'self' navigations. TODO There has to be a better way
+        NextActivity,
+        AddSet,
+        AddField,
+        About,
+        DeleteNote,
+        AddExercise,
+        CloneProgram,
+        ViewHistoryItem
     }
 }

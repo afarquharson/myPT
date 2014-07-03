@@ -10,25 +10,26 @@ namespace myPT.Core.Implementation.View.State
 {
     class ActivityStateReadOnly : IViewState
     {
-        public Common.ViewState StateValue
+        public ViewState StateValue
         {
-            get { return Common.ViewState.ReadOnly; }
+            get { return ViewState.ReadOnly; }
         }
 
-        private Dictionary<CommandKey, CommandName> _commands;
-        public Dictionary<CommandKey, CommandName> Commands
+        private Dictionary<CommandKey, NavigateKey> _commands;
+        public Dictionary<CommandKey, NavigateKey> Commands
         {
             get 
             { 
-                return _commands ?? (_commands = new Dictionary<CommandKey,CommandName>
+                return _commands ?? (_commands = new Dictionary<CommandKey,NavigateKey>
                 {
-                    {CommandKey.TopLeft, CommandName.Back},
-                    {CommandKey.TopRight, CommandName.None},
-                    {CommandKey.LowerLeft, CommandName.None},
-                    {CommandKey.LowerRight, CommandName.None},
-                    {CommandKey.ItemSelect, CommandName.None}
+                    {CommandKey.TopLeft, NavigateKey.SessionReadOnly},
+                    {CommandKey.TopRight, NavigateKey.None},
+                    {CommandKey.LowerLeft, NavigateKey.None},
+                    {CommandKey.LowerRight, NavigateKey.None},
+                    {CommandKey.ItemSelect, NavigateKey.None}
                 });
             }
         }
     }
+    
 }

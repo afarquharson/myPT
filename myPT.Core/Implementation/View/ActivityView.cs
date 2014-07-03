@@ -1,4 +1,5 @@
-﻿using myPT.Core.Implementation.Presenter;
+﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Presenter;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -30,7 +31,7 @@ namespace myPT.Core.Implementation.View
             Presenter.Load(data);
         }
 
-        public void Execute(Common.CommandKey command, string[] data)
+        public NavigationData Execute(Common.CommandKey command, string[] data)
         {
             throw new NotImplementedException();
         }

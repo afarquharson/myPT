@@ -21,20 +21,17 @@ namespace myPT.Core.Implementation.View
         public string GUID { get; set; }
         public string ParentGUID { get; set; }
 
-        public event EventHandler AddSetClicked = delegate { };
-        public event EventHandler AddExerciseClicked = delegate { };
-        public event EventHandler CloneClicked = delegate { };
-        public event EventHandler StartSessionClicked = delegate { };
-        public event EventHandler BackClicked = delegate { };
-
         public void Load(NavigationData data)
         {
             Presenter.Load(data);
         }
 
-        public void Execute(CommandKey command, string[] data)
+        public NavigationData Execute(CommandKey command, string[] data)
         {
-            throw new NotImplementedException();
+            return Presenter.Execute(command, data);
         }
+
+
+        public event EventHandler BackClicked;
     }
 }

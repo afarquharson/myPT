@@ -28,12 +28,6 @@ namespace myPT.Core.Implementation.Presenter
         public void Setup(IProgramView view)
         {
             View = view;
-
-            View.AddExerciseClicked += View_AddExerciseClicked;
-            View.AddSetClicked += View_AddSetClicked;
-            View.BackClicked += View_BackClicked;
-            View.CloneClicked += View_CloneClicked;
-            View.StartSessionClicked += View_StartSessionClicked;
         }
 
         public void Load(NavigationData data)
@@ -42,29 +36,16 @@ namespace myPT.Core.Implementation.Presenter
             Loader.GetLoader(data).Load<IDataModel, IProgramView>(View, data);
         }
 
-        void View_StartSessionClicked(object sender, EventArgs e)
+        public NavigationData Execute(CommandKey command, string[] data)
         {
-            throw new NotImplementedException();
-        }
+            var result = new NavigationData();
+            result.FromItem = View.GUID; //The GUID of the Program being viewed
+            result.Model = base.Model; //Our model
+            
+            //Determine which NavigateKey and ToItem values to include based on CommandKey
+            var commandName = View.State.Commands[command];
 
-        void View_CloneClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_AddSetClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_AddExerciseClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            return result;
         }
     }
 }
