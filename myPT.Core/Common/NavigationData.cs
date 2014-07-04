@@ -9,7 +9,7 @@ namespace myPT.Core.Common
 {
     public class NavigationData
     {
-        public NavigateKey Key { get; set; }
+        public Command ToScreen { get; set; }
         public String ToItem { get; set; }
         public String FromItem { get; set; }
         public IDataModel Model { get; set; } //Pass the model around instead of creating a new one each time

@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Model;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -11,9 +12,19 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class SessionPresenter : Presenter
     {
-        private ISessionView View;
+        private ISessionView View
+        {
+            get
+            {
+                return (ISessionView)_view;
+            }
+            set
+            {
+                _view = value;
+            }
+        }
 
-        public SessionPresenter(ISessionView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model) 
+        public SessionPresenter(ISessionView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model, view) 
         {
             Setup(view);
         }
@@ -26,31 +37,19 @@ namespace myPT.Core.Implementation.Presenter
         public void Setup(ISessionView view)
         {
             View = view;
-
-            View.AchievementValueChanged += View_AchievementValueChanged;
-            View.BackClicked += View_BackClicked;
-            View.StartSessionClicked += View_StartSessionClicked;
         }
 
         public void Load(NavigationData data)
         {
-            base._model = data.Model; //Use this model from now on
+            _model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, ISessionView>(View, data);
+            Actions.Add(Command.QuitSession, SaveAndQuit);
         }
 
-        void View_StartSessionClicked(object sender, EventArgs e)
+        public void SaveAndQuit()
         {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_AchievementValueChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            Model.History.Add(View.Session.GUID, View.Session); //Save the session to history
+            _navData.ToScreen = Command.Home; //Go back to the Home screen
         }
     }
 }

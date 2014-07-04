@@ -11,9 +11,19 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class TimelinePresenter : Presenter
     {
-        private ITimelineView View;
+        private ITimelineView View
+        {
+            get
+            {
+                return (ITimelineView)_view;
+            }
+            set
+            {
+                _view = value;
+            }
+        }
 
-        public TimelinePresenter(ITimelineView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model) 
+        public TimelinePresenter(ITimelineView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model, view) 
         {
             Setup(view);
         }
@@ -26,31 +36,12 @@ namespace myPT.Core.Implementation.Presenter
         public void Setup(ITimelineView view)
         {
             View = view;
-
-            View.AddClicked += View_AddClicked;
-            View.BackClicked += View_BackClicked;
-            View.ItemSelected += View_ItemSelected;
         }
 
         public void Load(NavigationData data)
         {
-            base._model = data.Model; //Use this model from now on
+            _model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, ITimelineView>(View, data);
-        }
-
-        void View_ItemSelected(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_AddClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
     }
 }

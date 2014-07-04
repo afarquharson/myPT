@@ -32,7 +32,7 @@ namespace myPT.Core.Implementation.Presenter
         }
 
         public void Save<TView, TModel>(TView view, TModel model)
-            where TView : Interfaces.View.IView
+            where TView : IView
             where TModel : IDataModel
         {
             _mapper.Map<TView, TModel>(view, model);

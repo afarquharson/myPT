@@ -12,5 +12,6 @@ namespace myPT.Core.Interfaces.Model
         DateTime StartTime { get; set; }
         DateTime EndTime { get; set; }
         Dictionary<string, IActivity> Activities { get; set; }
+        List<string> Order { get; set; }
     }
 }

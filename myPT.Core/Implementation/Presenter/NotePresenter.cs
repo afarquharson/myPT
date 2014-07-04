@@ -11,9 +11,19 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class NotePresenter : Presenter
     {
-        private INoteView View;
+        private INoteView View
+        {
+            get
+            {
+                return (INoteView)_view;
+            }
+            set
+            {
+                _view = value;
+            }
+        }
 
-        public NotePresenter(INoteView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model) 
+        public NotePresenter(INoteView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model, view) 
         {
             Setup(view);
         }
@@ -26,25 +36,19 @@ namespace myPT.Core.Implementation.Presenter
         public void Setup(INoteView view)
         {
             View = view;
-
-            View.BackClicked += View_BackClicked;
-            View.DeleteNoteClicked += View_DeleteNoteClicked;
         }
 
         public void Load(NavigationData data)
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, INoteView>(View, data);
+            Actions.Add(Command.DeleteNote, DeleteNote);
         }
 
-        void View_DeleteNoteClicked(object sender, EventArgs e)
+        public void DeleteNote()
         {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            Model.History.Remove(_view.GUID); //Remove the note from the history
+            _navData.ToScreen = Command.Timeline; //Go back to the Timeline view
         }
     }
 }

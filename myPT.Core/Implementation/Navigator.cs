@@ -12,31 +12,31 @@ namespace myPT.Core.Implementation
 {
     public class Navigator : INavigator
     {
-        Dictionary<NavigateKey, Func<IView>> _navDictionary;
-        Dictionary<NavigateKey, Func<IView>> NavDictionary 
+        Dictionary<Command, Func<IView>> _navDictionary;
+        Dictionary<Command, Func<IView>> NavDictionary 
         { 
             get 
             {
-                return _navDictionary ?? (_navDictionary = new Dictionary<NavigateKey, Func<IView>>
+                return _navDictionary ?? (_navDictionary = new Dictionary<Command, Func<IView>>
                         {
-                            {NavigateKey.ActivityReadOnly, () => new ActivityView()}, //Get a fresh view each time
-                            {NavigateKey.ActivityUpdate, () => new ActivityView()},
-                            {NavigateKey.ExerciseCreate, () => new ExerciseView()},
-                            {NavigateKey.ExerciseUpdate, () => new ExerciseView()},
-                            {NavigateKey.Home, () => new HomeView()},
-                            {NavigateKey.Note, () => new NoteView()},
-                            {NavigateKey.ProgramCreate, () => new ProgramView()},
-                            {NavigateKey.ProgramUpdate, () => new ProgramView()},
-                            {NavigateKey.SessionCreate, () => new SessionView()},
-                            {NavigateKey.SessionReadOnly, () => new SessionView()},
-                            {NavigateKey.Timeline, () => new TimelineView()}
+                            {Command.ActivityReadOnly, () => new ActivityView()}, //Get a fresh view each time
+                            {Command.ActivityUpdate, () => new ActivityView()},
+                            {Command.ExerciseCreate, () => new ExerciseView()},
+                            {Command.ExerciseUpdate, () => new ExerciseView()},
+                            {Command.Home, () => new HomeView()},
+                            {Command.Note, () => new NoteView()},
+                            {Command.ProgramCreate, () => new ProgramView()},
+                            {Command.ProgramUpdate, () => new ProgramView()},
+                            {Command.SessionCreate, () => new SessionView()},
+                            {Command.SessionReadOnly, () => new SessionView()},
+                            {Command.Timeline, () => new TimelineView()}
                         });
             } 
         }
 
         public IView Navigate(NavigationData data)
         {
-            var view = NavDictionary[data.Key]();
+            var view = NavDictionary[data.ToScreen]();
             view.Load(data);
             return view;
         }

@@ -15,45 +15,20 @@ namespace myPT.Core.Implementation.View.State
             get { return Common.ViewState.Create; }
         }
 
-        private Dictionary<CommandKey, NavigateKey> _commands;
-        public Dictionary<CommandKey, NavigateKey> Commands
+        private Dictionary<CommandKey, Command> _commands;
+        public Dictionary<CommandKey, Command> Commands
         {
             get 
             {
-                return _commands ?? (_commands = new Dictionary<CommandKey, NavigateKey>
+                return _commands ?? (_commands = new Dictionary<CommandKey, Command>
                 {
-                    {CommandKey.TopLeft, NavigateKey.ProgramCreate},
-                    {CommandKey.TopRight, NavigateKey.None},
-                    {CommandKey.LowerLeft, NavigateKey.None},
-                    {CommandKey.LowerRight, NavigateKey.AddField},
-                    {CommandKey.ItemSelect, NavigateKey.None}
+                    {CommandKey.TopLeft, Command.ProgramCreate},
+                    {CommandKey.TopRight, Command.None},
+                    {CommandKey.LowerLeft, Command.None},
+                    {CommandKey.LowerRight, Command.None},
+                    {CommandKey.ItemSelect, Command.None}
                 });
             }
-        }
-
-        public CommandName TopLeft
-        {
-            get { return CommandName.Back; }
-        }
-
-        public CommandName TopRight
-        {
-            get { return CommandName.None; }
-        }
-
-        public CommandName LowerLeft
-        {
-            get { return CommandName.AddSet; }
-        }
-
-        public CommandName LowerRight
-        {
-            get { return CommandName.AddField; }
-        }
-
-        public string ItemSelect
-        {
-            get { return String.Empty; }
         }
     }
 }

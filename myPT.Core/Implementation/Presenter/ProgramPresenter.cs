@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Model;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -11,10 +12,20 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class ProgramPresenter : Presenter
     {
-        private IProgramView View;
+        private IProgramView View 
+        { 
+            get 
+            {
+                return (IProgramView)_view; 
+            } 
+            set 
+            {
+                _view = value;
+            } 
+        }
 
         public ProgramPresenter(IProgramView view, IDataLoaderFactory loader, IDataModel model)
-            : base(loader, model)
+            : base(loader, model, view)
         {
             Setup(view);
         }
@@ -34,18 +45,25 @@ namespace myPT.Core.Implementation.Presenter
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, IProgramView>(View, data);
+            Actions.Add(Command.AddSet, AddSet);
+            Actions.Add(Command.AddExercise, AddExercise);
         }
 
-        public NavigationData Execute(CommandKey command, string[] data)
+        public void AddSet()
         {
-            var result = new NavigationData();
-            result.FromItem = View.GUID; //The GUID of the Program being viewed
-            result.Model = base.Model; //Our model
-            
-            //Determine which NavigateKey and ToItem values to include based on CommandKey
-            var commandName = View.State.Commands[command];
+            View.Program.Exercises.Children.Add(new ExerciseTreeItem 
+            {
+                Reps = 2 //Default value for reps
+            });
+        }
 
-            return result;
+        public void AddExercise()
+        {
+            var guid = Maker.GetGUID();
+            View.Program.Exercises.Exercises.Add(guid, new Exercise
+            {
+                GUID = guid
+            });
         }
     }
 }

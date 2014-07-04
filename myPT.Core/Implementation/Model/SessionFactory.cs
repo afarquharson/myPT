@@ -30,7 +30,8 @@ namespace myPT.Core.Implementation.Model
                 EndTime = DateTime.MinValue,
                 Summary = String.Format("{0} - {1}", DateTime.Now.Date.ToString(), program.Name),
                 ProgramGUID = program.GUID,
-                Activities = new Dictionary<string,IActivity>()
+                Activities = new Dictionary<string,IActivity>(),
+                Order = new List<string>()
             };
             var flatProgram = program.Exercises.Flatten(); //Get the exercises
             foreach (var v in flatProgram)
@@ -41,6 +42,7 @@ namespace myPT.Core.Implementation.Model
                     GUID =  GuidMaker.GetGUID(),
                     Exercise = v
                 };
+                result.Order.Add(tmp.GUID); //Preserve the order of activities since Dictionaries can't be trusted with this (assume order won't change)
                 result.Activities.Add(tmp.GUID, tmp); //New GUIDs as keys, but Exercise remembers its own GUID field - allows us to trace back to parent Exercise
             }
             return result;

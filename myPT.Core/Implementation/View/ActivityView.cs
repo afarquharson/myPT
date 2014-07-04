@@ -15,6 +15,7 @@ namespace myPT.Core.Implementation.View
         private ActivityPresenter _presenter;
         public ActivityPresenter Presenter { get { return _presenter ?? (_presenter = new ActivityPresenter(this)); } }
         public IActivity Activity { get; set; }
+        private IViewState _state;
         public IViewState State  { get; set; }
         public string GUID { get; set; }
         public string ParentGUID { get; set; }
@@ -33,7 +34,7 @@ namespace myPT.Core.Implementation.View
 
         public NavigationData Execute(Common.CommandKey command, string[] data)
         {
-            throw new NotImplementedException();
+            return Presenter.Execute(command, data);
         }
     }
 }

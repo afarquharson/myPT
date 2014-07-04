@@ -10,6 +10,6 @@ namespace myPT.Core.Interfaces.View
     public interface IViewState
     {
         ViewState StateValue { get; }
-        Dictionary<CommandKey, NavigateKey> Commands { get; }
+        Dictionary<CommandKey, Command> Commands { get; }
     }
 }

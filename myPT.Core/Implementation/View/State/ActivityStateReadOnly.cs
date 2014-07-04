@@ -15,18 +15,18 @@ namespace myPT.Core.Implementation.View.State
             get { return ViewState.ReadOnly; }
         }
 
-        private Dictionary<CommandKey, NavigateKey> _commands;
-        public Dictionary<CommandKey, NavigateKey> Commands
+        private Dictionary<CommandKey, Command> _commands;
+        public Dictionary<CommandKey, Command> Commands
         {
             get 
             { 
-                return _commands ?? (_commands = new Dictionary<CommandKey,NavigateKey>
+                return _commands ?? (_commands = new Dictionary<CommandKey,Command>
                 {
-                    {CommandKey.TopLeft, NavigateKey.SessionReadOnly},
-                    {CommandKey.TopRight, NavigateKey.None},
-                    {CommandKey.LowerLeft, NavigateKey.None},
-                    {CommandKey.LowerRight, NavigateKey.None},
-                    {CommandKey.ItemSelect, NavigateKey.None}
+                    {CommandKey.TopLeft, Command.SessionReadOnly},
+                    {CommandKey.TopRight, Command.None},
+                    {CommandKey.LowerLeft, Command.None},
+                    {CommandKey.LowerRight, Command.None},
+                    {CommandKey.ItemSelect, Command.None}
                 });
             }
         }

@@ -32,59 +32,59 @@ namespace myPT.ConsoleSkin
             //Home view
             var myNavData = new NavigationData()
             {
-                Key = NavigateKey.Home,
+                ToScreen = Command.Home,
                 Model = model
             };
             PrintScreen(nav.Navigate(myNavData));
 
             //Program view
-            myNavData.Key = NavigateKey.ProgramUpdate;
+            myNavData.ToScreen = Command.ProgramUpdate;
             myNavData.ToItem = proxy.Programs.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
-            myNavData.Key = NavigateKey.ProgramCreate;
+            myNavData.ToScreen = Command.ProgramCreate;
             myNavData.ToItem = proxy.Programs.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
             //Session view
-            myNavData.Key = NavigateKey.SessionReadOnly;
+            myNavData.ToScreen = Command.SessionReadOnly;
             myNavData.ToItem = proxy.Sessions.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
-            myNavData.Key = NavigateKey.SessionCreate;
+            myNavData.ToScreen = Command.SessionCreate;
             myNavData.ToItem = proxy.Sessions.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
             //Exercise view
-            myNavData.Key = NavigateKey.ExerciseUpdate;
+            myNavData.ToScreen = Command.ExerciseUpdate;
             myNavData.ToItem = "4";
             myNavData.FromItem = proxy.Programs.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
-            myNavData.Key = NavigateKey.ExerciseCreate;
+            myNavData.ToScreen = Command.ExerciseCreate;
             myNavData.ToItem = "4";
             myNavData.FromItem = proxy.Programs.First().Key;
             PrintScreen(nav.Navigate(myNavData));
 
             //Activity view
-            myNavData.Key = NavigateKey.ActivityReadOnly;
+            myNavData.ToScreen = Command.ActivityReadOnly;
             myNavData.ToItem = proxy.Sessions.First().Value.Activities.First().Value.GUID;
             myNavData.FromItem = proxy.Sessions.First().Value.GUID;
             PrintScreen(nav.Navigate(myNavData));
 
-            myNavData.Key = NavigateKey.ActivityUpdate;
+            myNavData.ToScreen = Command.ActivityUpdate;
             myNavData.ToItem = proxy.Sessions.First().Value.Activities.First().Value.GUID;
             myNavData.FromItem = proxy.Sessions.First().Value.GUID;
             PrintScreen(nav.Navigate(myNavData));
 
             //Note view
-            myNavData.Key = NavigateKey.Note;
+            myNavData.ToScreen = Command.Note;
             myNavData.ToItem = "1";
             myNavData.FromItem = String.Empty;
             PrintScreen(nav.Navigate(myNavData));
 
             //Timeline view
-            myNavData.Key = NavigateKey.Timeline;
+            myNavData.ToScreen = Command.Timeline;
             myNavData.ToItem = String.Empty;
             myNavData.FromItem = String.Empty;
             PrintScreen(nav.Navigate(myNavData));
@@ -108,9 +108,10 @@ namespace myPT.ConsoleSkin
             result.Add(String.Format("{0}\t\t{1}:{2}\t{3}",view.State.Commands[CommandKey.TopLeft].ToString(), view.GetType().Name, view.State.StateValue.ToString(), view.State.Commands[CommandKey.TopRight].ToString()));
             result.Add("--------------------------------------------------------------");
             //Add List content
+            int count = 0;
             foreach (var i in view.List)
             {
-                result.Add(String.Format("{0}: {1}",i.Key,i.Value));
+                result.Add(String.Format("{0}: {1} \t[{2}]",i.Key,i.Value, count++));
             }
             result.Add("--------------------------------------------------------------");
             //Add bottom buttons

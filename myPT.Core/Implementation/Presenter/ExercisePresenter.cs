@@ -14,7 +14,7 @@ namespace myPT.Core.Implementation.Presenter
         private IExerciseView View;
 
         public ExercisePresenter(IExerciseView view, IDataLoaderFactory loader, IDataModel model)
-            : base(loader, model)
+            : base(loader, model, view)
         {
             Setup(view);
         }
@@ -27,10 +27,6 @@ namespace myPT.Core.Implementation.Presenter
         private void Setup(IExerciseView view)
         {
             View = view;
-
-            View.AddFieldClicked += View_AddFieldClicked;
-            View.BackClicked += View_BackClicked;
-            View.UpdateGoalClicked += View_UpdateGoalClicked;
         }
 
         public void Load(NavigationData data)
@@ -38,21 +34,5 @@ namespace myPT.Core.Implementation.Presenter
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, IExerciseView>(View, data);
         }
-
-        void View_UpdateGoalClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_BackClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        void View_AddFieldClicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

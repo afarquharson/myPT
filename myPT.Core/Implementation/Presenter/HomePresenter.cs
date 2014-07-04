@@ -11,9 +11,19 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class HomePresenter : Presenter
     {
-        private IHomeView View;
+        private IHomeView View
+        {
+            get
+            {
+                return (IHomeView)_view;
+            }
+            set
+            {
+                _view = value;
+            }
+        }
 
-        public HomePresenter(IHomeView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model) 
+        public HomePresenter(IHomeView view, IDataLoaderFactory loader, IDataModel model) : base(loader, model, view) 
         {
             Setup(view);
         }
@@ -32,6 +42,24 @@ namespace myPT.Core.Implementation.Presenter
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, IHomeView>(View, data);
+            Actions.Add(Command.About, About);
+            Actions.Add(Command.ProgramCreate, ProgramCreate);
+            Actions.Add(Command.Timeline, Timeline);
+        }
+
+        private void Timeline()
+        {
+            _navData.ToScreen = Command.Timeline;
+        }
+
+        private void ProgramCreate()
+        {
+            _navData.ToScreen = Command.ProgramCreate;
+        }
+
+        private void About()
+        {
+            _navData.ToScreen = Command.About;
         }
     }
 }

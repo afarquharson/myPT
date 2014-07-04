@@ -31,7 +31,7 @@ namespace myPT.Core.Implementation.View
 
         public NavigationData Execute(CommandKey command, string[] data)
         {
-            throw new NotImplementedException();
+            return Presenter.Execute(command, data);
         }
 
         public Dictionary<string, string> List

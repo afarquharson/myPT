@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myPT.Core.Common
 {
-    public enum NavigateKey
+    public enum Command
     {
         ActivityReadOnly,
         ActivityUpdate,
@@ -20,7 +20,7 @@ namespace myPT.Core.Common
         Note,
         Home,
         None,
-        PreviousActivity, //This and below are 'self' navigations. TODO There has to be a better way
+        PreviousActivity, //This and below are 'self' navigations.
         NextActivity,
         AddSet,
         AddField,
@@ -28,6 +28,7 @@ namespace myPT.Core.Common
         DeleteNote,
         AddExercise,
         CloneProgram,
-        ViewHistoryItem
+        ViewHistoryItem,
+        QuitSession
     }
 }

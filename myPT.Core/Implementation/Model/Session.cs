@@ -21,13 +21,14 @@ namespace myPT.Core.Implementation.Model
         public string GUID { get; set; }
         public string ProgramGUID { get; set; }
         public Dictionary<string, IActivity> Activities { get; set; }
+        public List<string> Order { get; set; }
 
         public Dictionary<string, string> Print()
         {
             var result = new Dictionary<string, string>();
-            foreach (var a in Activities)
+            foreach (var o in Order)
             {
-                result.Add(a.Value.GUID, a.Value.Exercise.Detail[ExerciseFieldKey.Description]);
+                result.Add(Activities[o].GUID, Activities[o].Exercise.Detail[ExerciseFieldKey.Description]);
             }
             return result;
         }
