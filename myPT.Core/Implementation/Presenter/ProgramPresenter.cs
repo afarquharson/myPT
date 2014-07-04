@@ -45,8 +45,20 @@ namespace myPT.Core.Implementation.Presenter
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, IProgramView>(View, data);
-            Actions.Add(Command.AddSet, AddSet);
-            Actions.Add(Command.AddExercise, AddExercise);
+
+            if (View.Program == null)
+            {
+                var tmp = Maker.GetGUID();
+                View.Program = new Program
+                {
+                    GUID = tmp,
+                    Exercises = new ExerciseTreeItem()
+                };
+                View.GUID = tmp;
+            }
+
+            if (!Actions.ContainsKey(Command.AddSet)) Actions.Add(Command.AddSet, AddSet);
+            if (!Actions.ContainsKey(Command.AddExercise)) Actions.Add(Command.AddExercise, AddExercise);
         }
 
         public void AddSet()
@@ -62,7 +74,11 @@ namespace myPT.Core.Implementation.Presenter
             var guid = Maker.GetGUID();
             View.Program.Exercises.Exercises.Add(guid, new Exercise
             {
-                GUID = guid
+                GUID = guid,
+                Detail = new Dictionary<ExerciseFieldKey, string>
+                {
+                    {ExerciseFieldKey.Description, "New Exercise"}
+                }
             });
         }
     }

@@ -9,6 +9,7 @@ using myPT.Core.Common;
 using myPT.Core.Implementation.Presenter.Mapper;
 using myPT.Core.Implementation.View.State;
 using myPT.Core.Implementation.Presenter;
+using myPT.Core.Implementation.Presenter.Loader;
 
 namespace myPT.Core.Implementation
 {
@@ -30,7 +31,8 @@ namespace myPT.Core.Implementation
                 {Command.Home, () => new DataLoader(new HomeMapper(), new HomeStateDefault())},
                 {Command.Timeline, () => new DataLoader(new TimelineMapper(), new TimelineStateDefault())},
                 {Command.ActivityReadOnly, () => new DataLoader(new ActivityMapper(), new ActivityStateReadOnly())},
-                {Command.ActivityUpdate, () => new DataLoader(new ActivityMapper(), new ActivityStateUpdate())}
+                {Command.ActivityUpdate, () => new DataLoader(new ActivityMapper(), new ActivityStateUpdate())},
+                {Command.None, () => new EmptyDataLoader()}
             };
         }
 

@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Model;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -42,6 +43,17 @@ namespace myPT.Core.Implementation.Presenter
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, INoteView>(View, data);
+
+            if (View.Item == null)
+            {
+                var tmp = Maker.GetGUID();
+                View.Item = new HistoryItem()
+                {
+                    GUID = tmp
+                };
+                View.GUID = tmp;
+            }
+
             Actions.Add(Command.DeleteNote, DeleteNote);
         }
 

@@ -37,7 +37,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapNoteToView(IDataModel model, INoteView noteView)
         {
-            noteView.Item = model.History[noteView.GUID];
+            IHistoryItem existingItem;
+            model.History.TryGetValue(noteView.GUID, out existingItem);
+            if (existingItem != null)
+            {
+                noteView.Item = model.History[noteView.GUID];
+            }
         }
     }
 }

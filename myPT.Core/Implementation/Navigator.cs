@@ -12,6 +12,8 @@ namespace myPT.Core.Implementation
 {
     public class Navigator : INavigator
     {
+        private IView _oldView;
+
         Dictionary<Command, Func<IView>> _navDictionary;
         Dictionary<Command, Func<IView>> NavDictionary 
         { 
@@ -29,13 +31,15 @@ namespace myPT.Core.Implementation
                             {Command.ProgramUpdate, () => new ProgramView()},
                             {Command.SessionCreate, () => new SessionView()},
                             {Command.SessionReadOnly, () => new SessionView()},
-                            {Command.Timeline, () => new TimelineView()}
+                            {Command.Timeline, () => new TimelineView()},
+                            {Command.None, () => _oldView}
                         });
             } 
         }
 
         public IView Navigate(NavigationData data)
         {
+            _oldView = data.FromView;
             var view = NavDictionary[data.ToScreen]();
             view.Load(data);
             return view;

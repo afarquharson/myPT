@@ -28,7 +28,12 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapProgramToView(IDataModel model, IProgramView programView)
         {
-            programView.Program = model.Programs[programView.GUID];
+            IProgram existingProgram;
+            model.Programs.TryGetValue(programView.GUID, out existingProgram);
+            if (existingProgram != null)
+            {
+                programView.Program = model.Programs[programView.GUID];
+            }
         }
     }
 }

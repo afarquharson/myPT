@@ -1,4 +1,5 @@
 ﻿using myPT.Core.Common;
+using myPT.Core.Implementation.Model;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -33,6 +34,16 @@ namespace myPT.Core.Implementation.Presenter
         {
             base._model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, IExerciseView>(View, data);
+
+            if (View.Exercise == null)
+            {
+                var tmp = Maker.GetGUID();
+                View.Exercise = new Exercise
+                {
+                    GUID = tmp
+                };
+                View.GUID = tmp;
+            }
         }
     }
 }

@@ -55,7 +55,8 @@ namespace myPT.Core.Implementation.Presenter
                 FromItem = _view.GUID,
                 Model = Model,
                 ToScreen = Command.None,
-                ToItem = String.Empty
+                ToItem = String.Empty,
+                FromView = _view
             };
             _selectedItem = data.FirstOrDefault(); //Save the selected item, if any
 

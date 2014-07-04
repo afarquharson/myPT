@@ -1,5 +1,6 @@
 ﻿using myPT.Core.Common;
 using myPT.Core.Implementation.Model;
+using myPT.Core.Interfaces;
 using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
@@ -12,6 +13,9 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class SessionPresenter : Presenter
     {
+        private ISessionFactory _factory;
+        private ISessionFactory Factory { get { return _factory ?? (_factory = new SessionFactory()); } }
+
         private ISessionView View
         {
             get
@@ -43,6 +47,13 @@ namespace myPT.Core.Implementation.Presenter
         {
             _model = data.Model; //Use this model from now on
             Loader.GetLoader(data).Load<IDataModel, ISessionView>(View, data);
+
+            if (View.Session == null)
+            {
+                View.Session = Factory.GetSession(Model.Programs[View.ParentGUID]);
+                View.GUID = View.Session.GUID;
+            }
+
             Actions.Add(Command.QuitSession, SaveAndQuit);
         }
 
