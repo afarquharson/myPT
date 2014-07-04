@@ -41,7 +41,12 @@ namespace myPT.Core.Implementation.Model
             var i = 0;
             foreach (var e in program)
             {
-                result.Add(i.ToString(), e);//Just key by index, this time
+                while (result.ContainsKey(i.ToString()))
+                {
+                    i++;
+                }
+                var index = String.IsNullOrEmpty(e.Key) ? i.ToString() : e.Key;
+                result.Add(index, e.Value);
                 i++;
             }
             return result;

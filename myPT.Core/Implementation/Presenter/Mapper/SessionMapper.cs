@@ -1,4 +1,6 @@
-﻿using myPT.Core.Interfaces.Model;
+﻿using myPT.Core.Implementation.Model;
+using myPT.Core.Interfaces;
+using myPT.Core.Interfaces.Model;
 using myPT.Core.Interfaces.View;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,9 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 {
     class SessionMapper : Common.Mapper
     {
+        ISessionFactory _factory;
+        ISessionFactory Factory { get { return _factory ?? (_factory = new SessionFactory()); } }
+
         public SessionMapper()
         {
             Setup();
@@ -37,7 +42,19 @@ namespace myPT.Core.Implementation.Presenter.Mapper
 
         private void MapSessionToView(IDataModel model, ISessionView sessionView)
         {
-            sessionView.Session = model.Sessions[sessionView.GUID];
+            ISession existingSession = null;
+            model.Sessions.TryGetValue(sessionView.GUID, out existingSession);
+            if (existingSession == null)
+            {
+                //add a new session
+                sessionView.Session = Factory.GetSession(model.Programs[sessionView.ParentGUID]);
+                sessionView.GUID = sessionView.Session.GUID;
+            }
+            else
+            {
+                sessionView.Session = model.Sessions[sessionView.GUID];
+            }
+            
         }
     }
 }

@@ -75,6 +75,7 @@ namespace myPT.ConsoleSkin
 
         static List<string> RenderScreen(IView view)
         {
+            var GuidPad = "                                    ";
             var result = new List<string>();
             //Add top buttons and screen title
             result.Add("==============================================================");
@@ -85,7 +86,7 @@ namespace myPT.ConsoleSkin
             foreach (var i in view.List)
             {
                 var index = view.State.Commands[CommandKey.ItemSelect] != Command.None ? count.ToString() : String.Empty;
-                result.Add(String.Format("{0}: {1} \t[{2}]",i.Key,i.Value,index));
+                result.Add(String.Format("{0}: {1} \t[{2}]",i.Key.Length < 2 ? GuidPad : i.Key,i.Value,i.Key.Length < 2 ? String.Empty : index));
                 count++;
             }
             result.Add("--------------------------------------------------------------");

@@ -12,7 +12,7 @@ namespace myPT.Core.Implementation.Presenter
 {
     public class ExercisePresenter : Presenter
     {
-        private IExerciseView View;
+        private IExerciseView View { get { return (IExerciseView)_view; } set { _view = value; } }
 
         public ExercisePresenter(IExerciseView view, IDataLoaderFactory loader, IDataModel model)
             : base(loader, model, view)

@@ -25,13 +25,13 @@ namespace myPT.ConsoleSkin
             _sessionFactory = new SessionFactory();
 
             _item = new HistoryItem();
-                _item.GUID = "1";
+                _item.GUID = _maker.GetGUID();
                 _item.Summary = "A new Note for today";
                 _item.Date = DateTime.Today.Date;
 
             _exercise = new Exercise()
             {
-                GUID = "2",
+                GUID = _maker.GetGUID(),
                 Detail = new Dictionary<ExerciseFieldKey, string>
                 {
                     {ExerciseFieldKey.Description, "My Exercise"},
@@ -42,7 +42,7 @@ namespace myPT.ConsoleSkin
             _program = new Program()
             {
                 Name = "My Program",
-                GUID = "3",
+                GUID = _maker.GetGUID(),
                 Exercises = new ExerciseTreeItem()
             };
             _program.Exercises.Reps = 2;
@@ -53,8 +53,8 @@ namespace myPT.ConsoleSkin
                     Reps = 2,
                     Exercises = new Dictionary<string,IExercise>()
                     {
-                        {"4", _exercise},
-                        {"5", _exercise}
+                        {_maker.GetGUID(), _exercise},
+                        {_maker.GetGUID(), _exercise}
                     }
                 },
                 new ExerciseTreeItem()
@@ -62,7 +62,7 @@ namespace myPT.ConsoleSkin
                     Reps = 1,
                     Exercises = new Dictionary<string,IExercise>()
                     {
-                        {"6", _exercise}
+                        {_maker.GetGUID(), _exercise}
                     }
                 }
             };

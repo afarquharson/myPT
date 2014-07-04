@@ -100,15 +100,15 @@ namespace myPT.Core.Implementation.Model
             return thisLevel;
         }
 
-        internal List<string> PrintTree()
+        internal List<KeyValuePair<string, string>> PrintTree()
         {
             return Print(this, string.Empty);
         }
 
-        private static List<string> Print(ExerciseTreeItem node, string prefix)
+        private static List<KeyValuePair<string, string>> Print(ExerciseTreeItem node, string prefix)
         {
-            var thisLevel = new List<string>();
-            if (node.Reps > 0) thisLevel.Add(String.Format("{0}x{1}", prefix, node.Reps.ToString()));
+            var thisLevel = new List<KeyValuePair<string, string>>();
+            if (node.Reps > 0) thisLevel.Add(new KeyValuePair<string, string>(String.Empty, String.Format("{0}x{1}", prefix, node.Reps.ToString())));
             if (node.Children.Count > 0)
             {
                 //If there are children, update the prefix and traverse
@@ -122,10 +122,10 @@ namespace myPT.Core.Implementation.Model
                 //If there are no children, add each exercise description and reps
                 foreach (var e in node.Exercises)
                 {
-                    thisLevel.Add(String.Format("{0}{1} x{2}", prefix, e.Value.Detail[Common.ExerciseFieldKey.Description], e.Value.Detail[Common.ExerciseFieldKey.MaxReps]));
+                    thisLevel.Add(new KeyValuePair<string, string>(e.Key, String.Format("{0}{1} x{2}", prefix, e.Value.Detail[Common.ExerciseFieldKey.Description], e.Value.Detail[Common.ExerciseFieldKey.MaxReps])));
                 }
             }
-            if (node.Reps > 0) thisLevel.Add(prefix);
+            if (node.Reps > 0) thisLevel.Add(new KeyValuePair<string,string>(String.Empty, prefix));
             return thisLevel;
         }
 

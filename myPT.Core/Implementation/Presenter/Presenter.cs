@@ -25,7 +25,6 @@ namespace myPT.Core.Implementation.Presenter
                 {
                         {_view.State.Commands[CommandKey.TopLeft], Back},
                         {_view.State.Commands[CommandKey.ItemSelect], ToSelectedItem}
-                        
                 });
             }
             set

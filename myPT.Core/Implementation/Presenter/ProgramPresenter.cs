@@ -59,6 +59,13 @@ namespace myPT.Core.Implementation.Presenter
 
             if (!Actions.ContainsKey(Command.AddSet)) Actions.Add(Command.AddSet, AddSet);
             if (!Actions.ContainsKey(Command.AddExercise)) Actions.Add(Command.AddExercise, AddExercise);
+            if (!Actions.ContainsKey(Command.SessionCreate)) Actions.Add(Command.SessionCreate, StartSession);
+        }
+
+        private void StartSession()
+        {
+            _navData.ToScreen = Command.SessionCreate;
+            _navData.ToItem = String.Empty;
         }
 
         public void AddSet()
